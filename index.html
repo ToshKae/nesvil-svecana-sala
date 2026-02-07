@@ -60,20 +60,28 @@
         }
 
         .inline-icon {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             vertical-align: middle;
-            margin-left: 8px;
-            color: #888;
-            transition: color 0.3s ease;
+            margin-left: 6px;
+            width: 28px;
+            height: 28px;
+            background: #d4af37;
+            color: #1a1a1a;
+            border-radius: 6px;
+            transition: all 0.3s ease;
         }
 
         .inline-icon:hover {
-            color: #d4af37;
+            background: #c9a432;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(212,175,55,0.3);
         }
 
         .inline-icon svg {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
         }
 
                 /* Map - MAIN ELEMENT */
