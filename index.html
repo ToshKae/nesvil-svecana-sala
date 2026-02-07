@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Svecana Sala Nesvil - Kako do nas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #fdf8f3 0%, #f5ebe0 50%, #fdf8f3 100%);
+            min-height: 100vh;
+            color: #3d3d3d;
+            overflow-x: hidden;
+        }
+
+        /* Decorative floral corners */
+        .floral-corner {
+            position: fixed;
+            width: 150px;
+            height: 150px;
+            opacity: 0.6;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .floral-top-left {
+            top: -10px;
+            left: -10px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M10,50 Q30,20 50,10 Q40,30 50,50 Q30,40 10,50' fill='%23b8a88a' opacity='0.5'/%3E%3Cpath d='M5,30 Q20,10 40,5 Q30,20 35,35 Q20,25 5,30' fill='%23a8c4a8' opacity='0.4'/%3E%3Ccircle cx='15' cy='15' r='3' fill='%23d4af37' opacity='0.6'/%3E%3Ccircle cx='25' cy='25' r='2' fill='%23d4af37' opacity='0.4'/%3E%3C/svg%3E") no-repeat;
+            animation: fadeSlideIn 1.5s ease-out;
+        }
+
+        .floral-top-right {
+            top: -10px;
+            right: -10px;
+            transform: scaleX(-1);
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M10,50 Q30,20 50,10 Q40,30 50,50 Q30,40 10,50' fill='%23b8a88a' opacity='0.5'/%3E%3Cpath d='M5,30 Q20,10 40,5 Q30,20 35,35 Q20,25 5,30' fill='%23a8c4a8' opacity='0.4'/%3E%3Ccircle cx='15' cy='15' r='3' fill='%23d4af37' opacity='0.6'/%3E%3Ccircle cx='25' cy='25' r='2' fill='%23d4af37' opacity='0.4'/%3E%3C/svg%3E") no-repeat;
+            animation: fadeSlideIn 1.5s ease-out 0.2s both;
+        }
+
+        .floral-bottom-left {
+            bottom: -10px;
+            left: -10px;
+            transform: scaleY(-1);
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M10,50 Q30,20 50,10 Q40,30 50,50 Q30,40 10,50' fill='%23b8a88a' opacity='0.5'/%3E%3Cpath d='M5,30 Q20,10 40,5 Q30,20 35,35 Q20,25 5,30' fill='%23a8c4a8' opacity='0.4'/%3E%3Ccircle cx='15' cy='15' r='3' fill='%23d4af37' opacity='0.6'/%3E%3Ccircle cx='25' cy='25' r='2' fill='%23d4af37' opacity='0.4'/%3E%3C/svg%3E") no-repeat;
+            animation: fadeSlideIn 1.5s ease-out 0.4s both;
+        }
+
+        .floral-bottom-right {
+            bottom: -10px;
+            right: -10px;
+            transform: scale(-1, -1);
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M10,50 Q30,20 50,10 Q40,30 50,50 Q30,40 10,50' fill='%23b8a88a' opacity='0.5'/%3E%3Cpath d='M5,30 Q20,10 40,5 Q30,20 35,35 Q20,25 5,30' fill='%23a8c4a8' opacity='0.4'/%3E%3Ccircle cx='15' cy='15' r='3' fill='%23d4af37' opacity='0.6'/%3E%3Ccircle cx='25' cy='25' r='2' fill='%23d4af37' opacity='0.4'/%3E%3C/svg%3E") no-repeat;
+            animation: fadeSlideIn 1.5s ease-out 0.6s both;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        /* Header */
+        .header {
+            margin-bottom: 30px;
+            animation: fadeUp 1s ease-out;
+        }
+
+        .ornament {
+            color: #d4af37;
+            font-size: 2rem;
+            letter-spacing: 0.5em;
+            margin-bottom: 15px;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        .title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #5c5c5c;
+            letter-spacing: 0.1em;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #8b7355;
+            margin-bottom: 20px;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
+            animation: fadeUp 1s ease-out 0.3s both;
+        }
+
+        .divider-line {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+        }
+
+        .divider-icon {
+            color: #d4af37;
+            font-size: 1.2rem;
+        }
+
+        /* Info section */
+        .info-section {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 20px rgba(184, 168, 138, 0.15);
+            backdrop-filter: blur(10px);
+            animation: fadeUp 1s ease-out 0.5s both;
+        }
+
+        .venue-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #5c5c5c;
+            margin-bottom: 8px;
+        }
+
+        .venue-address {
+            font-size: 0.95rem;
+            color: #7a7a7a;
+            line-height: 1.5;
+        }
+
+        /* Map section */
+        .map-section {
+            margin-bottom: 25px;
+            animation: fadeUp 1s ease-out 0.7s both;
+        }
+
+        .map-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: #8b7355;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            border: 3px solid rgba(212, 175, 55, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .map-container:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .map-container iframe {
+            display: block;
+            width: 100%;
+            height: 300px;
+            border: none;
+        }
+
+        /* Buttons section */
+        .buttons-section {
+            animation: fadeUp 1s ease-out 0.9s both;
+        }
+
+        .buttons-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: #8b7355;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-button svg {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-button:hover svg {
+            transform: scale(1.1);
+        }
+
+        .btn-apple {
+            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+            color: white;
+        }
+
+        .btn-apple:hover {
+            background: linear-gradient(135deg, #333 0%, #4a4a4a 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-android {
+            background: linear-gradient(135deg, #34a853 0%, #4caf50 100%);
+            color: white;
+        }
+
+        .btn-android:hover {
+            background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            animation: fadeUp 1s ease-out 1.1s both;
+        }
+
+        .footer-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            color: #a89a8a;
+            font-style: italic;
+        }
+
+        .hearts {
+            color: #d4af37;
+            font-size: 1.5rem;
+            margin-top: 10px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 0.6;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, #d4af37 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 15s infinite;
+            opacity: 0;
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 2s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 4s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 1s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 3s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 5s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 2.5s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 4.5s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 1.5s; }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 400px) {
+            .title {
+                font-size: 2rem;
+            }
+
+            .buttons-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-button {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
+
+            .floral-corner {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Decorative corners -->
+    <div class="floral-corner floral-top-left"></div>
+    <div class="floral-corner floral-top-right"></div>
+    <div class="floral-corner floral-bottom-left"></div>
+    <div class="floral-corner floral-bottom-right"></div>
+
+    <!-- Floating particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="ornament">~ ~ ~</div>
+            <h1 class="title">Kako do nas</h1>
+            <p class="subtitle">Vidimo se uskoro!</p>
+        </header>
+
+        <div class="divider">
+            <span class="divider-line"></span>
+            <span class="divider-icon">&#10047;</span>
+            <span class="divider-line"></span>
+        </div>
+
+        <!-- Venue info -->
+        <section class="info-section">
+            <h2 class="venue-name">Svecana Sala Nesvil</h2>
+            <p class="venue-address">
+                Nisevac, Srbija<br>
+                <small style="color: #a89a8a;">(Put nije ucrtan na Google Maps)</small>
+            </p>
+        </section>
+
+        <!-- Map -->
+        <section class="map-section">
+            <p class="map-label">Lokacija na mapi</p>
+            <div class="map-container">
+                <iframe
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=21.34202003479004%2C43.58612442498498%2C21.360025405883793%2C43.59711135498498&layer=mapnik&marker=43.591722%2C21.350723"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </section>
+
+        <!-- Navigation buttons -->
+        <section class="buttons-section">
+            <p class="buttons-label">Otvori navigaciju</p>
+            <div class="buttons-container">
+                <!-- Apple Maps (iOS) -->
+                <a href="http://maps.apple.com/?daddr=43.591722,21.350723&dirflg=d" class="nav-button btn-apple">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09997 22C7.78997 22.05 6.79997 20.68 5.95997 19.47C4.24997 17 2.93997 12.45 4.69997 9.39C5.56997 7.87 7.12997 6.91 8.81997 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/>
+                    </svg>
+                    Apple Maps
+                </a>
+
+                <!-- Google Maps / Android -->
+                <a href="https://www.google.com/maps/dir/?api=1&destination=43.591722,21.350723&travelmode=driving" class="nav-button btn-android">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                    Google Maps
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-text">Radujemo se vašem dolasku!</p>
+            <div class="hearts">&#10084;</div>
+        </footer>
+    </div>
+</body>
+</html>
