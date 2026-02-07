@@ -178,9 +178,41 @@
             box-shadow: 0 8px 20px rgba(212,175,55,0.3);
         }
 
+        /* Contact */
+        .contact-section {
+            margin-top: 25px;
+        }
+
+        .contacts {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link span {
+            color: #888;
+            margin-left: 4px;
+        }
+
+        .contact-link:hover {
+            color: #d4af37;
+        }
+
+        .contact-link:hover span {
+            color: #d4af37;
+        }
+
         /* Footer */
         .footer {
-            margin-top: 35px;
+            margin-top: 25px;
             animation: fadeUp 0.8s ease-out 0.4s both;
         }
 
@@ -300,6 +332,15 @@
                     </svg>
                     Google Maps
                 </a>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="contact-section">
+            <p class="section-label">Kontakt</p>
+            <div class="contacts">
+                <a href="tel:+381629720144" class="contact-link">Nenad <span>+381 62 972 0144</span></a>
+                <a href="tel:+381694572362" class="contact-link">Sofija <span>+381 69 457 2362</span></a>
             </div>
         </section>
 
