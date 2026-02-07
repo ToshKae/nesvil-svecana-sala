@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Svecana Sala Nesvil - Kako do nas</title>
+    <title>Svečana Sala Nesvil - Kako do nas</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -16,182 +16,228 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #fdf8f3 0%, #f5ebe0 50%, #fdf8f3 100%);
+            background: #0a0a0a;
             min-height: 100vh;
-            color: #3d3d3d;
+            color: #ffffff;
             overflow-x: hidden;
+            position: relative;
         }
 
-        /* Decorative floral corners */
-        .floral-corner {
+        /* Geometric LED lines background */
+        .bg-lines {
             position: fixed;
-            width: 150px;
-            height: 150px;
-            opacity: 0.6;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
-            z-index: 10;
+            z-index: 0;
+            overflow: hidden;
         }
 
-        .floral-top-left {
-            top: -10px;
-            left: -10px;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M10,50 Q30,20 50,10 Q40,30 50,50 Q30,40 10,50' fill='%23b8a88a' opacity='0.5'/%3E%3Cpath d='M5,30 Q20,10 40,5 Q30,20 35,35 Q20,25 5,30' fill='%23a8c4a8' opacity='0.4'/%3E%3Ccircle cx='15' cy='15' r='3' fill='%23d4af37' opacity='0.6'/%3E%3Ccircle cx='25' cy='25' r='2' fill='%23d4af37' opacity='0.4'/%3E%3C/svg%3E") no-repeat;
-            animation: fadeSlideIn 1.5s ease-out;
+        .line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+            height: 1px;
+            animation: glow 3s ease-in-out infinite;
         }
 
-        .floral-top-right {
-            top: -10px;
-            right: -10px;
-            transform: scaleX(-1);
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M10,50 Q30,20 50,10 Q40,30 50,50 Q30,40 10,50' fill='%23b8a88a' opacity='0.5'/%3E%3Cpath d='M5,30 Q20,10 40,5 Q30,20 35,35 Q20,25 5,30' fill='%23a8c4a8' opacity='0.4'/%3E%3Ccircle cx='15' cy='15' r='3' fill='%23d4af37' opacity='0.6'/%3E%3Ccircle cx='25' cy='25' r='2' fill='%23d4af37' opacity='0.4'/%3E%3C/svg%3E") no-repeat;
-            animation: fadeSlideIn 1.5s ease-out 0.2s both;
+        .line:nth-child(1) { top: 10%; left: -10%; width: 60%; transform: rotate(-15deg); animation-delay: 0s; }
+        .line:nth-child(2) { top: 25%; right: -10%; width: 50%; transform: rotate(10deg); animation-delay: 0.5s; }
+        .line:nth-child(3) { top: 50%; left: -5%; width: 40%; transform: rotate(-5deg); animation-delay: 1s; }
+        .line:nth-child(4) { top: 75%; right: -15%; width: 55%; transform: rotate(20deg); animation-delay: 1.5s; }
+        .line:nth-child(5) { top: 90%; left: -10%; width: 45%; transform: rotate(-10deg); animation-delay: 2s; }
+
+        .line-v {
+            position: absolute;
+            background: linear-gradient(180deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+            width: 1px;
+            height: 30%;
+            animation: glow 4s ease-in-out infinite;
         }
 
-        .floral-bottom-left {
-            bottom: -10px;
-            left: -10px;
-            transform: scaleY(-1);
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M10,50 Q30,20 50,10 Q40,30 50,50 Q30,40 10,50' fill='%23b8a88a' opacity='0.5'/%3E%3Cpath d='M5,30 Q20,10 40,5 Q30,20 35,35 Q20,25 5,30' fill='%23a8c4a8' opacity='0.4'/%3E%3Ccircle cx='15' cy='15' r='3' fill='%23d4af37' opacity='0.6'/%3E%3Ccircle cx='25' cy='25' r='2' fill='%23d4af37' opacity='0.4'/%3E%3C/svg%3E") no-repeat;
-            animation: fadeSlideIn 1.5s ease-out 0.4s both;
-        }
+        .line-v:nth-child(6) { left: 15%; top: 0; animation-delay: 0.3s; }
+        .line-v:nth-child(7) { right: 20%; top: 30%; animation-delay: 0.8s; }
+        .line-v:nth-child(8) { left: 40%; bottom: 0; animation-delay: 1.3s; }
 
-        .floral-bottom-right {
-            bottom: -10px;
-            right: -10px;
-            transform: scale(-1, -1);
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M10,50 Q30,20 50,10 Q40,30 50,50 Q30,40 10,50' fill='%23b8a88a' opacity='0.5'/%3E%3Cpath d='M5,30 Q20,10 40,5 Q30,20 35,35 Q20,25 5,30' fill='%23a8c4a8' opacity='0.4'/%3E%3Ccircle cx='15' cy='15' r='3' fill='%23d4af37' opacity='0.6'/%3E%3Ccircle cx='25' cy='25' r='2' fill='%23d4af37' opacity='0.4'/%3E%3C/svg%3E") no-repeat;
-            animation: fadeSlideIn 1.5s ease-out 0.6s both;
+        @keyframes glow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
         }
 
         .container {
+            position: relative;
+            z-index: 1;
             max-width: 500px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 50px 20px;
             text-align: center;
         }
 
         /* Header */
         .header {
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             animation: fadeUp 1s ease-out;
         }
 
-        .ornament {
-            color: #d4af37;
-            font-size: 2rem;
-            letter-spacing: 0.5em;
-            margin-bottom: 15px;
-            animation: sparkle 2s ease-in-out infinite;
+        .logo-accent {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 0 auto 25px;
         }
 
         .title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
             font-weight: 600;
-            color: #5c5c5c;
-            letter-spacing: 0.1em;
+            color: #ffffff;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
             margin-bottom: 10px;
-            line-height: 1.2;
+            line-height: 1.3;
+        }
+
+        .title span {
+            color: #d4af37;
         }
 
         .subtitle {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
-            font-style: italic;
-            color: #8b7355;
-            margin-bottom: 20px;
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
         }
 
+        /* Divider */
         .divider {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
-            margin: 25px 0;
-            animation: fadeUp 1s ease-out 0.3s both;
+            gap: 20px;
+            margin: 30px 0;
+            animation: fadeUp 1s ease-out 0.2s both;
         }
 
         .divider-line {
-            width: 60px;
+            width: 80px;
             height: 1px;
             background: linear-gradient(90deg, transparent, #d4af37, transparent);
         }
 
-        .divider-icon {
-            color: #d4af37;
-            font-size: 1.2rem;
+        .divider-diamond {
+            width: 8px;
+            height: 8px;
+            background: #d4af37;
+            transform: rotate(45deg);
         }
 
-        /* Info section */
-        .info-section {
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 20px;
-            padding: 25px;
+        /* Venue card */
+        .venue-card {
+            background: linear-gradient(145deg, rgba(20, 20, 20, 0.9), rgba(30, 30, 30, 0.9));
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 4px;
+            padding: 30px 25px;
             margin-bottom: 25px;
-            box-shadow: 0 4px 20px rgba(184, 168, 138, 0.15);
-            backdrop-filter: blur(10px);
-            animation: fadeUp 1s ease-out 0.5s both;
+            animation: fadeUp 1s ease-out 0.4s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .venue-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
         }
 
         .venue-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
             font-weight: 600;
-            color: #5c5c5c;
-            margin-bottom: 8px;
+            color: #d4af37;
+            margin-bottom: 15px;
+            letter-spacing: 0.05em;
         }
 
         .venue-address {
             font-size: 0.95rem;
-            color: #7a7a7a;
-            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .venue-address .pin {
+            font-size: 1.1rem;
+            margin-right: 5px;
+        }
+
+        /* Instagram link */
+        .instagram-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #d4af37;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 10px 20px;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .instagram-link:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: #d4af37;
+            transform: translateY(-2px);
+        }
+
+        .instagram-link svg {
+            width: 20px;
+            height: 20px;
         }
 
         /* Map section */
         .map-section {
             margin-bottom: 25px;
-            animation: fadeUp 1s ease-out 0.7s both;
+            animation: fadeUp 1s ease-out 0.6s both;
         }
 
-        .map-label {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
-            color: #8b7355;
+        .section-label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
             margin-bottom: 15px;
-            font-style: italic;
         }
 
         .map-container {
-            border-radius: 20px;
+            border-radius: 4px;
             overflow: hidden;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-            border: 3px solid rgba(212, 175, 55, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
         }
 
         .map-container:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            border-color: rgba(212, 175, 55, 0.6);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.1);
         }
 
         .map-container iframe {
             display: block;
             width: 100%;
-            height: 300px;
+            height: 280px;
             border: none;
+            filter: grayscale(20%) contrast(1.1);
         }
 
-        /* Buttons section */
+        /* Navigation buttons */
         .buttons-section {
-            animation: fadeUp 1s ease-out 0.9s both;
-        }
-
-        .buttons-label {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
-            color: #8b7355;
-            margin-bottom: 15px;
-            font-style: italic;
+            animation: fadeUp 1s ease-out 0.8s both;
         }
 
         .buttons-container {
@@ -204,19 +250,36 @@
         .nav-button {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 15px 25px;
-            border-radius: 50px;
+            gap: 12px;
+            padding: 16px 28px;
+            border-radius: 4px;
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .nav-button:hover::before {
+            left: 100%;
         }
 
         .nav-button svg {
-            width: 24px;
-            height: 24px;
+            width: 22px;
+            height: 22px;
             transition: transform 0.3s ease;
         }
 
@@ -225,53 +288,70 @@
         }
 
         .btn-apple {
-            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
-            color: white;
+            background: #ffffff;
+            color: #0a0a0a;
         }
 
         .btn-apple:hover {
-            background: linear-gradient(135deg, #333 0%, #4a4a4a 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            background: #f0f0f0;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
         }
 
         .btn-android {
-            background: linear-gradient(135deg, #34a853 0%, #4caf50 100%);
-            color: white;
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .btn-android:hover {
-            background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.3);
+            border-color: #d4af37;
+            color: #d4af37;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
         }
 
         /* Footer */
         .footer {
-            margin-top: 40px;
-            padding-top: 20px;
-            animation: fadeUp 1s ease-out 1.1s both;
+            margin-top: 50px;
+            animation: fadeUp 1s ease-out 1s both;
         }
 
         .footer-text {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1rem;
-            color: #a89a8a;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
             font-style: italic;
+            color: rgba(255, 255, 255, 0.6);
         }
 
-        .hearts {
-            color: #d4af37;
-            font-size: 1.5rem;
-            margin-top: 10px;
+        .footer-accent {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .footer-accent span {
+            width: 6px;
+            height: 6px;
+            background: #d4af37;
+            transform: rotate(45deg);
             animation: pulse 2s ease-in-out infinite;
+        }
+
+        .footer-accent span:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .footer-accent span:nth-child(3) {
+            animation-delay: 0.6s;
         }
 
         /* Animations */
         @keyframes fadeUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -279,88 +359,25 @@
             }
         }
 
-        @keyframes fadeSlideIn {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 0.6;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes sparkle {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.6;
-            }
-        }
-
         @keyframes pulse {
             0%, 100% {
-                transform: scale(1);
+                opacity: 1;
+                transform: rotate(45deg) scale(1);
             }
             50% {
-                transform: scale(1.1);
-            }
-        }
-
-        /* Floating particles */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .particle {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: radial-gradient(circle, #d4af37 0%, transparent 70%);
-            border-radius: 50%;
-            animation: float 15s infinite;
-            opacity: 0;
-        }
-
-        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
-        .particle:nth-child(2) { left: 20%; animation-delay: 2s; }
-        .particle:nth-child(3) { left: 30%; animation-delay: 4s; }
-        .particle:nth-child(4) { left: 40%; animation-delay: 1s; }
-        .particle:nth-child(5) { left: 50%; animation-delay: 3s; }
-        .particle:nth-child(6) { left: 60%; animation-delay: 5s; }
-        .particle:nth-child(7) { left: 70%; animation-delay: 2.5s; }
-        .particle:nth-child(8) { left: 80%; animation-delay: 4.5s; }
-        .particle:nth-child(9) { left: 90%; animation-delay: 1.5s; }
-
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.6;
-            }
-            90% {
-                opacity: 0.6;
-            }
-            100% {
-                transform: translateY(-100px) rotate(720deg);
-                opacity: 0;
+                opacity: 0.5;
+                transform: rotate(45deg) scale(0.8);
             }
         }
 
         /* Responsive */
         @media (max-width: 400px) {
+            .container {
+                padding: 40px 15px;
+            }
+
             .title {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
 
             .buttons-container {
@@ -370,63 +387,57 @@
 
             .nav-button {
                 width: 100%;
-                max-width: 250px;
+                max-width: 260px;
                 justify-content: center;
-            }
-
-            .floral-corner {
-                width: 100px;
-                height: 100px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Decorative corners -->
-    <div class="floral-corner floral-top-left"></div>
-    <div class="floral-corner floral-top-right"></div>
-    <div class="floral-corner floral-bottom-left"></div>
-    <div class="floral-corner floral-bottom-right"></div>
-
-    <!-- Floating particles -->
-    <div class="particles">
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
+    <!-- Geometric background lines -->
+    <div class="bg-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line-v"></div>
+        <div class="line-v"></div>
+        <div class="line-v"></div>
     </div>
 
     <div class="container">
         <!-- Header -->
         <header class="header">
-            <div class="ornament">~ ~ ~</div>
-            <h1 class="title">Kako do nas</h1>
-            <p class="subtitle">Vidimo se uskoro!</p>
+            <div class="logo-accent"></div>
+            <h1 class="title">Svečana Sala <span>Nesvil</span></h1>
+            <p class="subtitle">Kako do nas</p>
         </header>
 
         <div class="divider">
             <span class="divider-line"></span>
-            <span class="divider-icon">&#10047;</span>
+            <span class="divider-diamond"></span>
             <span class="divider-line"></span>
         </div>
 
         <!-- Venue info -->
-        <section class="info-section">
-            <h2 class="venue-name">Svecana Sala Nesvil</h2>
+        <section class="venue-card">
+            <h2 class="venue-name">Nesvil</h2>
             <p class="venue-address">
-                Nisevac, Srbija<br>
-                <small style="color: #a89a8a;">(Put nije ucrtan na Google Maps)</small>
+                <span class="pin">📍</span>Šandora Petefija<br>
+                37000 Kruševac, Srbija
             </p>
+            <a href="https://www.instagram.com/nesvil.svecana.sala/" target="_blank" rel="noopener" class="instagram-link">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+                @nesvil.svecana.sala
+            </a>
         </section>
 
         <!-- Map -->
         <section class="map-section">
-            <p class="map-label">Lokacija na mapi</p>
+            <p class="section-label">Lokacija</p>
             <div class="map-container">
                 <iframe
                     src="https://www.openstreetmap.org/export/embed.html?bbox=21.34202003479004%2C43.58612442498498%2C21.360025405883793%2C43.59711135498498&layer=mapnik&marker=43.591722%2C21.350723"
@@ -438,7 +449,7 @@
 
         <!-- Navigation buttons -->
         <section class="buttons-section">
-            <p class="buttons-label">Otvori navigaciju</p>
+            <p class="section-label">Otvori navigaciju</p>
             <div class="buttons-container">
                 <!-- Apple Maps (iOS) -->
                 <a href="http://maps.apple.com/?daddr=43.591722,21.350723&dirflg=d" class="nav-button btn-apple">
@@ -460,8 +471,12 @@
 
         <!-- Footer -->
         <footer class="footer">
-            <p class="footer-text">Radujemo se vašem dolasku!</p>
-            <div class="hearts">&#10084;</div>
+            <p class="footer-text">Radujemo se vašem dolasku</p>
+            <div class="footer-accent">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </footer>
     </div>
 </body>
