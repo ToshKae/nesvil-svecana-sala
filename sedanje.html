@@ -257,5 +257,52 @@
             </details>
         </div>
     </div>
+    <script>
+        function animateClose(details) {
+            const content = details.querySelector('ul');
+            const start = content.scrollHeight;
+            content.style.height = start + 'px';
+            requestAnimationFrame(() => {
+                content.style.transition = 'height 0.3s ease';
+                content.style.height = '0px';
+                content.addEventListener('transitionend', () => {
+                    details.open = false;
+                    content.style.height = '';
+                    content.style.transition = '';
+                }, { once: true });
+            });
+        }
+
+        function animateOpen(details) {
+            details.open = true;
+            const content = details.querySelector('ul');
+            const end = content.scrollHeight;
+            content.style.height = '0px';
+            content.style.overflow = 'hidden';
+            requestAnimationFrame(() => {
+                content.style.transition = 'height 0.3s ease';
+                content.style.height = end + 'px';
+                content.addEventListener('transitionend', () => {
+                    content.style.height = '';
+                    content.style.transition = '';
+                    content.style.overflow = '';
+                }, { once: true });
+            });
+        }
+
+        document.querySelectorAll('.seating-group').forEach(details => {
+            details.addEventListener('click', e => {
+                e.preventDefault();
+                if (details.open) {
+                    animateClose(details);
+                } else {
+                    document.querySelectorAll('.seating-group').forEach(other => {
+                        if (other !== details && other.open) animateClose(other);
+                    });
+                    animateOpen(details);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
