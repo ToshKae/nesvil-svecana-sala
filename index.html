@@ -173,7 +173,7 @@
         .map-container iframe {
             display: block;
             width: 100%;
-            height: 380px;
+            height: 437px;
             border: none;
         }
 
@@ -351,6 +351,272 @@
         .footer-accent span:nth-child(2) { animation-delay: 0.2s; }
         .footer-accent span:nth-child(3) { animation-delay: 0.4s; }
 
+        .pozivnica-embed {
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+            border: 3px solid #d4af37;
+        }
+
+        .pozivnica-embed img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .uskoro-inline {
+            width: 100%;
+            margin-top: 12px;
+            padding: 30px 20px;
+            background: #f0e8d8;
+            border: 3px solid #d4af37;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .uskoro-inline h2 {
+            font-family: 'Playfair Display', serif;
+            color: #1a1a1a;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .uskoro-inline p {
+            color: #d4af37;
+            font-size: 0.85rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        /* Seating plan */
+        .seating-section {
+            width: 100%;
+            margin-top: 12px;
+            border: 3px solid #d4af37;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+            background: #fdf6f0;
+            text-align: left;
+        }
+
+        .seating-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: #1a1a1a;
+            padding: 20px 20px 16px;
+            text-align: center;
+            border-bottom: 1px solid #e8d9c0;
+        }
+
+        .seating-group {
+            border-bottom: 1px solid #e8d9c0;
+        }
+
+        .seating-group:last-child {
+            border-bottom: none;
+        }
+
+        .seating-group summary {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            cursor: pointer;
+            user-select: none;
+            list-style: none;
+            background: #fdf6f0;
+            transition: background 0.2s ease;
+        }
+
+        .seating-group summary::-webkit-details-marker { display: none; }
+
+        .seating-group summary:hover {
+            background: #f5ebe0;
+        }
+
+        .seating-chevron {
+            width: 18px;
+            height: 18px;
+            color: #d4af37;
+            flex-shrink: 0;
+            transition: transform 0.2s ease;
+        }
+
+        .seating-group[open] .seating-chevron {
+            transform: rotate(90deg);
+        }
+
+        .seating-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #d4af37;
+            min-width: 24px;
+        }
+
+        .seating-group-title {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #1a1a1a;
+            flex: 1;
+        }
+
+        .seating-count {
+            font-size: 0.75rem;
+            color: #999;
+        }
+
+        .seating-names {
+            list-style: none;
+            padding: 0 20px 12px 54px;
+            background: #f8f0e6;
+        }
+
+        .seating-names li {
+            padding: 7px 0;
+            font-size: 0.85rem;
+            color: #333;
+            border-bottom: 1px solid #ecdfc8;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .seating-table-num {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #d4af37;
+            background: #fdf6f0;
+            border: 1px solid #d4af37;
+            border-radius: 5px;
+            padding: 2px 7px;
+            flex-shrink: 0;
+        }
+
+        .seating-names li:last-child {
+            border-bottom: none;
+        }
+
+        /* Timeline */
+        .timeline-section {
+            width: 100%;
+            margin-top: 20px;
+            border: 3px solid #d4af37;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+            background: #fdf6f0;
+            text-align: left;
+        }
+
+        .timeline-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: #1a1a1a;
+            padding: 20px 20px 16px;
+            text-align: center;
+            border-bottom: 1px solid #e8d9c0;
+        }
+
+        .timeline {
+            padding: 20px 20px 8px 20px;
+            position: relative;
+        }
+
+
+        .tl-card {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .tl-dot {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            white-space: nowrap;
+            flex-shrink: 0;
+            width: 52px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #d4af37;
+            border-radius: 8px;
+            padding: 4px 6px;
+        }
+
+        .tl-dot.end {
+            color: #1a1a1a;
+        }
+
+        .tl-body {
+            flex: 1;
+            background: #f5ebe0;
+            border-radius: 10px;
+            padding: 12px 14px;
+            border: 1px solid #e8d9c0;
+        }
+
+        .tl-header {
+            margin-bottom: 8px;
+        }
+
+        .tl-time { display: none; }
+
+        .tl-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .tl-teams {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .tl-team {
+            display: flex;
+            gap: 7px;
+            align-items: flex-start;
+            font-size: 0.78rem;
+            line-height: 1.4;
+        }
+
+        .tl-badge {
+            font-size: 0.68rem;
+            font-weight: 600;
+            padding: 1px 6px;
+            border-radius: 4px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .badge-band    { background: #fef3c7; color: #92660a; }
+        .badge-waiters { background: #f0fdf4; color: #166534; }
+        .badge-photo   { background: #eff6ff; color: #1e40af; }
+        .badge-effects { background: #fdf4ff; color: #7e22ce; }
+
+        .tl-team-text { color: #444; }
+
+        .placeholder-box {
+            width: 100%;
+            height: 120px;
+            background: #f0e8d8;
+            border: 2px dashed #d4af37;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
         .sala-contact {
             display: flex;
             justify-content: center;
@@ -416,7 +682,7 @@
         @media (max-width: 400px) {
             .title { font-size: 1.4rem; }
 
-            .map-container iframe { height: 320px; }
+            .map-container iframe { height: 368px; }
 
             .buttons-container {
                 flex-direction: column;
@@ -445,19 +711,25 @@
             </p>
             <p class="coordinates">43.591722, 21.350723</p>
             <div class="icon-row">
-                <button class="inline-icon" onclick="openPopup()">
+                <a href="#pozivnica" class="inline-icon">
                     <svg viewBox="0 0 24 24" fill="currentColor">
                         <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
                     </svg>
-                </button>
-<button class="inline-icon" onclick="openSeatingPopup()">
+                </a>
+                <a href="#timeline" class="inline-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                </a>
+                <a href="#sedanje" class="inline-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M5 11V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v5"/>
                         <path d="M3 11h18v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4z"/>
                         <line x1="7" y1="16" x2="7" y2="21"/>
                         <line x1="17" y1="16" x2="17" y2="21"/>
                     </svg>
-                </button>
+                </a>
             </div>
         </section>
 
@@ -493,14 +765,6 @@
         </section>
 
         <!-- Contact -->
-        <section class="contact-section">
-            <p class="section-label welcome-line">Radujemo se vašem dolasku <span class="inline-accent"><span></span><span></span><span></span></span></p>
-            <div class="contacts">
-                <a href="tel:+381629720144" class="contact-link">Nenad <span>+381 62 972 0144</span></a>
-                <a href="tel:+381694572362" class="contact-link">Sofija <span>+381 69 457 2362</span></a>
-            </div>
-        </section>
-
         <!-- Footer with Countdown -->
         <footer class="footer">
             <div class="countdown" id="countdown">
@@ -517,6 +781,197 @@
                     <div class="countdown-label">minuta</div>
                 </div>
             </div>
+            <div class="pozivnica-embed" id="pozivnica">
+                <img src="pozivnice/18 04 2026_20260208_001808_0000.png" alt="Pozivnica">
+            </div>
+            <div class="timeline-section" id="timeline">
+                <h2>🕐 Program večeri</h2>
+                <div class="timeline">
+
+                    <div class="tl-card">
+                        <div class="tl-dot">15:00</div>
+                        <div class="tl-body">
+                            <div class="tl-header">
+                                <span class="tl-title">Dolazak gostiju</span>
+                            </div>
+                            <div class="tl-teams">
+                                <div class="tl-team"><span class="tl-badge badge-band">Band</span><span class="tl-team-text">Obrok benda i ambijentalna muzika</span></div>
+                                <div class="tl-team"><span class="tl-badge badge-waiters">Konobaři</span><span class="tl-team-text">Iznošenje predjela i točanje pića</span></div>
+                                <div class="tl-team"><span class="tl-badge badge-photo">Foto/Video</span><span class="tl-team-text">Fotografisanje gostiju pri dolasku</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tl-card">
+                        <div class="tl-dot">16:20</div>
+                        <div class="tl-body">
+                            <div class="tl-header">
+                                <span class="tl-title">Ulazak mladenaca</span>
+                            </div>
+                            <div class="tl-teams">
+                                <div class="tl-team"><span class="tl-badge badge-band">Band</span><span class="tl-team-text">Najava mladenaca i izvođenje ulazne pesme</span></div>
+                                <div class="tl-team"><span class="tl-badge badge-effects">Efekti</span><span class="tl-team-text">Aktivacija dima i vatrometa</span></div>
+                                <div class="tl-team"><span class="tl-badge badge-photo">Foto/Video</span><span class="tl-team-text">Snimanje ulaska</span></div>
+                                <div class="tl-team"><span class="tl-badge badge-waiters">Konobaři</span><span class="tl-team-text">Pripremaju serviranje glavnog jela</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tl-card">
+                        <div class="tl-dot">17:00</div>
+                        <div class="tl-body">
+                            <div class="tl-header">
+                                <span class="tl-title">Civilno venčanje</span>
+                            </div>
+                            <div class="tl-teams">
+                                <div class="tl-team"><span class="tl-badge badge-band">Band</span><span class="tl-team-text">Kratka pauza i obrok</span></div>
+                                <div class="tl-team"><span class="tl-badge badge-waiters">Konobaři</span><span class="tl-team-text">Diskretno serviranje</span></div>
+                                <div class="tl-team"><span class="tl-badge badge-photo">Foto/Video</span><span class="tl-team-text">Snimanje ceremonije</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tl-card">
+                        <div class="tl-dot">17:20</div>
+                        <div class="tl-body">
+                            <div class="tl-header">
+                                <span class="tl-title">Prvi ples</span>
+                            </div>
+                            <div class="tl-teams">
+                                <div class="tl-team"><span class="tl-badge badge-band">Band</span><span class="tl-team-text">Najava plesa i izvođenje pesme</span></div>
+                                <div class="tl-team"><span class="tl-badge badge-waiters">Konobaři</span><span class="tl-team-text">Pauza u serviranju</span></div>
+                                <div class="tl-team"><span class="tl-badge badge-effects">Efekti</span><span class="tl-team-text">Niska magla i vatromet</span></div>
+                                <div class="tl-team"><span class="tl-badge badge-photo">Foto/Video</span><span class="tl-team-text">Snimanje prvog plesa</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tl-card">
+                        <div class="tl-dot">18:45</div>
+                        <div class="tl-body">
+                            <div class="tl-header">
+                                <span class="tl-title">Kolo</span>
+                            </div>
+                            <div class="tl-teams">
+                                <div class="tl-team"><span class="tl-badge badge-band">Band</span><span class="tl-team-text">Izvođenje kola</span></div>
+                                <div class="tl-team"><span class="tl-badge badge-photo">Foto/Video</span><span class="tl-team-text">Snimanje</span></div>
+                                <div class="tl-team"><span class="tl-badge badge-waiters">Konobaři</span><span class="tl-team-text">Priprema pečenja</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tl-card">
+                        <div class="tl-dot">19:00</div>
+                        <div class="tl-body">
+                            <div class="tl-header">
+                                <span class="tl-title">Pečenje</span>
+                            </div>
+                            <div class="tl-teams">
+                                <div class="tl-team"><span class="tl-badge badge-band">Band</span><span class="tl-team-text">Pauza od 15 minuta</span></div>
+                                <div class="tl-team"><span class="tl-badge badge-waiters">Konobaři</span><span class="tl-team-text">Iznošenje pečenja — prvo bendu, zatim gostima</span></div>
+                                <div class="tl-team"><span class="tl-badge badge-photo">Foto/Video</span><span class="tl-team-text">Dopunsko fotografisanje sa mladencima</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tl-card">
+                        <div class="tl-dot">21:00</div>
+                        <div class="tl-body">
+                            <div class="tl-header">
+                                <span class="tl-title">Torta</span>
+                            </div>
+                            <div class="tl-teams">
+                                <div class="tl-team"><span class="tl-badge badge-band">Band</span><span class="tl-team-text">Pauza od 10 minuta, preuzeta muzika</span></div>
+                                <div class="tl-team"><span class="tl-badge badge-waiters">Konobaři</span><span class="tl-team-text">Iznošenje i sečenje torte</span></div>
+                                <div class="tl-team"><span class="tl-badge badge-effects">Efekti</span><span class="tl-team-text">Vatromet i šampanjac toranj</span></div>
+                                <div class="tl-team"><span class="tl-badge badge-photo">Foto/Video</span><span class="tl-team-text">Snimanje</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tl-card">
+                        <div class="tl-dot end">23:00</div>
+                        <div class="tl-body">
+                            <div class="tl-header">
+                                <span class="tl-title">Kraj večeri</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="seating-section" id="sedanje">
+                <h2>🪑 Raspored sedanja</h2>
+                <details class="seating-group">
+                    <summary>
+                        <svg class="seating-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                        <span class="seating-letter">A</span>
+                        <span class="seating-group-title">Adžić – Avramović</span>
+                        <span class="seating-count">2 gosta</span>
+                    </summary>
+                    <ul class="seating-names">
+                        <li><span>Adžić Miloš</span><span class="seating-table-num">Sto 3</span></li>
+                        <li><span>Avramović Ana</span><span class="seating-table-num">Sto 1</span></li>
+                    </ul>
+                </details>
+                <details class="seating-group">
+                    <summary>
+                        <svg class="seating-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                        <span class="seating-letter">B</span>
+                        <span class="seating-group-title">Banović – Bojić</span>
+                        <span class="seating-count">2 gosta</span>
+                    </summary>
+                    <ul class="seating-names">
+                        <li><span>Banović Strahinja</span><span class="seating-table-num">Sto 3</span></li>
+                        <li><span>Bojić Marko</span><span class="seating-table-num">Sto 2</span></li>
+                    </ul>
+                </details>
+                <details class="seating-group">
+                    <summary>
+                        <svg class="seating-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                        <span class="seating-letter">J</span>
+                        <span class="seating-group-title">Janković – Jovanović</span>
+                        <span class="seating-count">3 gosta</span>
+                    </summary>
+                    <ul class="seating-names">
+                        <li><span>Janković Petra</span><span class="seating-table-num">Sto 5</span></li>
+                        <li><span>Jovanović Dragan</span><span class="seating-table-num">Sto 4</span></li>
+                        <li><span>Jovanović Milica</span><span class="seating-table-num">Sto 4</span></li>
+                    </ul>
+                </details>
+                <details class="seating-group">
+                    <summary>
+                        <svg class="seating-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                        <span class="seating-letter">M</span>
+                        <span class="seating-group-title">Marković – Milošević</span>
+                        <span class="seating-count">3 gosta</span>
+                    </summary>
+                    <ul class="seating-names">
+                        <li><span>Marković Stefan</span><span class="seating-table-num">Sto 2</span></li>
+                        <li><span>Milošević Jovana</span><span class="seating-table-num">Sto 6</span></li>
+                        <li><span>Milošević Nikola</span><span class="seating-table-num">Sto 6</span></li>
+                    </ul>
+                </details>
+                <details class="seating-group">
+                    <summary>
+                        <svg class="seating-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                        <span class="seating-letter">V</span>
+                        <span class="seating-group-title">Vasić – Vuković</span>
+                        <span class="seating-count">2 gosta</span>
+                    </summary>
+                    <ul class="seating-names">
+                        <li><span>Vasić Jelena</span><span class="seating-table-num">Sto 1</span></li>
+                        <li><span>Vuković Aleksandar</span><span class="seating-table-num">Sto 5</span></li>
+                    </ul>
+                </details>
+            </div>
+            <section class="contact-section">
+                <p class="section-label welcome-line">Radujemo se vašem dolasku <span class="inline-accent"><span></span><span></span><span></span></span></p>
+                <div class="contacts">
+                    <a href="tel:+381629720144" class="contact-link">Nenad <span>+381 62 972 0144</span></a>
+                    <a href="tel:+381694572362" class="contact-link">Sofija <span>+381 69 457 2362</span></a>
+                </div>
+            </section>
             <div class="sala-contact">
                 <a href="https://svecana-sala.rs/" target="_blank" rel="noopener" class="sala-link">
                     <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
@@ -536,48 +991,7 @@
             </div>
         </footer>
     </div>
-    <!-- Invitation Popup -->
-    <div class="popup-overlay" id="invitePopup" onclick="closePopup(event)">
-        <div class="popup-content">
-            <button class="popup-close" onclick="closePopup(event)">&times;</button>
-            <img src="pozivnice/18 04 2026_20260208_001808_0000.png" alt="Pozivnica">
-        </div>
-    </div>
-
-    <div class="popup-overlay" id="seatingPopup" onclick="closeSeatingPopup(event)">
-        <div class="uskoro-card">
-            <button class="popup-close" onclick="closeSeatingPopup(event)">&times;</button>
-            <div class="uskoro-icon">🪑</div>
-            <h2>Raspored sedanja</h2>
-            <p>Uskoro</p>
-        </div>
-    </div>
-
     <script>
-        function openPopup() {
-            document.getElementById('invitePopup').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function openSeatingPopup() {
-            document.getElementById('seatingPopup').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeSeatingPopup(e) {
-            if (e.target.classList.contains('popup-overlay') || e.target.classList.contains('popup-close')) {
-                document.getElementById('seatingPopup').classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        }
-
-        function closePopup(e) {
-            if (e.target.classList.contains('popup-overlay') || e.target.classList.contains('popup-close')) {
-                document.getElementById('invitePopup').classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        }
-
         // Countdown to May 31, 2026 at 15:00
         const weddingDate = new Date('2026-05-31T15:00:00');
 
