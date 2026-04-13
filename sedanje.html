@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nešvil - Raspored sedanja</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #fdf6f0;
+            min-height: 100vh;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 20px;
+        }
+
+        .title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            letter-spacing: 0.08em;
+            margin-bottom: 4px;
+        }
+
+        .title span {
+            color: #d4af37;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            color: #6b4f2a;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        .back-link:hover {
+            color: #d4af37;
+        }
+
+        .seating-section {
+            width: 100%;
+            border: 3px solid #d4af37;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+            background: #fdf6f0;
+            text-align: left;
+        }
+
+        .seating-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: #1a1a1a;
+            padding: 20px 20px 16px;
+            text-align: center;
+            border-bottom: 1px solid #e8d9c0;
+        }
+
+        .seating-group {
+            border-bottom: 1px solid #e8d9c0;
+        }
+
+        .seating-group:last-child {
+            border-bottom: none;
+        }
+
+        .seating-group summary {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            cursor: pointer;
+            user-select: none;
+            list-style: none;
+            background: #fdf6f0;
+            transition: background 0.2s ease;
+        }
+
+        .seating-group summary::-webkit-details-marker { display: none; }
+
+        .seating-group summary:hover {
+            background: #f5ebe0;
+        }
+
+        .seating-chevron {
+            width: 18px;
+            height: 18px;
+            color: #d4af37;
+            flex-shrink: 0;
+            transition: transform 0.2s ease;
+        }
+
+        .seating-group[open] .seating-chevron {
+            transform: rotate(90deg);
+        }
+
+        .seating-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #d4af37;
+            min-width: 24px;
+        }
+
+        .seating-group-title {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #1a1a1a;
+            flex: 1;
+        }
+
+        .seating-count {
+            font-size: 0.75rem;
+            color: #999;
+        }
+
+        .seating-names {
+            list-style: none;
+            padding: 0 20px 12px 54px;
+            background: #f8f0e6;
+        }
+
+        .seating-names li {
+            padding: 7px 0;
+            font-size: 0.85rem;
+            color: #333;
+            border-bottom: 1px solid #ecdfc8;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .seating-table-num {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #d4af37;
+            background: #fdf6f0;
+            border: 1px solid #d4af37;
+            border-radius: 5px;
+            padding: 2px 7px;
+            flex-shrink: 0;
+        }
+
+        .seating-names li:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Nova Svečana Sala <span>Nešvil</span></h1>
+        </header>
+
+        <a href="index.html" class="back-link">
+            ← Nazad na glavnu stranu
+        </a>
+
+        <div class="seating-section">
+            <h2>🪑 Raspored sedanja</h2>
+            <details class="seating-group" open>
+                <summary>
+                    <svg class="seating-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                    <span class="seating-letter">A</span>
+                    <span class="seating-group-title">Adžić – Avramović</span>
+                    <span class="seating-count">2 gosta</span>
+                </summary>
+                <ul class="seating-names">
+                    <li><span>Adžić Miloš</span><span class="seating-table-num">Sto broj 3</span></li>
+                    <li><span>Avramović Ana</span><span class="seating-table-num">Sto broj 1</span></li>
+                </ul>
+            </details>
+            <details class="seating-group">
+                <summary>
+                    <svg class="seating-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                    <span class="seating-letter">B</span>
+                    <span class="seating-group-title">Banović – Bojić</span>
+                    <span class="seating-count">2 gosta</span>
+                </summary>
+                <ul class="seating-names">
+                    <li><span>Banović Strahinja</span><span class="seating-table-num">Sto broj 3</span></li>
+                    <li><span>Bojić Marko</span><span class="seating-table-num">Sto broj 2</span></li>
+                </ul>
+            </details>
+            <details class="seating-group">
+                <summary>
+                    <svg class="seating-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                    <span class="seating-letter">D</span>
+                    <span class="seating-group-title">Dragović – Dumić</span>
+                    <span class="seating-count">2 gosta</span>
+                </summary>
+                <ul class="seating-names">
+                    <li><span>Dumić Sofija</span><span class="seating-table-num">Sto broj 5</span></li>
+                    <li><span>Dragović Uroš</span><span class="seating-table-num">Sto broj 6</span></li>
+                </ul>
+            </details>
+            <details class="seating-group">
+                <summary>
+                    <svg class="seating-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                    <span class="seating-letter">J</span>
+                    <span class="seating-group-title">Janković – Jovanović</span>
+                    <span class="seating-count">3 gosta</span>
+                </summary>
+                <ul class="seating-names">
+                    <li><span>Janković Petra</span><span class="seating-table-num">Sto broj 5</span></li>
+                    <li><span>Jovanović Dragan</span><span class="seating-table-num">Sto broj 4</span></li>
+                    <li><span>Jovanović Milica</span><span class="seating-table-num">Sto broj 4</span></li>
+                </ul>
+            </details>
+            <details class="seating-group">
+                <summary>
+                    <svg class="seating-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                    <span class="seating-letter">M</span>
+                    <span class="seating-group-title">Marković – Milošević</span>
+                    <span class="seating-count">3 gosta</span>
+                </summary>
+                <ul class="seating-names">
+                    <li><span>Marković Stefan</span><span class="seating-table-num">Sto broj 2</span></li>
+                    <li><span>Milošević Jovana</span><span class="seating-table-num">Sto broj 6</span></li>
+                    <li><span>Milošević Nikola</span><span class="seating-table-num">Sto broj 6</span></li>
+                </ul>
+            </details>
+            <details class="seating-group">
+                <summary>
+                    <svg class="seating-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                    <span class="seating-letter">T</span>
+                    <span class="seating-group-title">Todorović – Tošić</span>
+                    <span class="seating-count">2 gosta</span>
+                </summary>
+                <ul class="seating-names">
+                    <li><span>Todorović Ana</span><span class="seating-table-num">Sto broj 1</span></li>
+                    <li><span>Tošić Nenad</span><span class="seating-table-num">Sto broj 5</span></li>
+                </ul>
+            </details>
+        </div>
+    </div>
+</body>
+</html>
