@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nešvil - Program večeri</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #fdf6f0;
+            min-height: 100vh;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 20px;
+        }
+
+        .title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            letter-spacing: 0.08em;
+            margin-bottom: 4px;
+        }
+
+        .title span {
+            color: #d4af37;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            color: #6b4f2a;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        .back-link:hover {
+            color: #d4af37;
+        }
+
+        .timeline-section {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+            background: #fdf6f0;
+            text-align: left;
+        }
+
+        .timeline-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: #1a1a1a;
+            padding: 20px 20px 16px;
+            text-align: center;
+            border-bottom: 1px solid #e8d9c0;
+        }
+
+        .timeline {
+            padding: 20px 20px 8px 20px;
+            position: relative;
+        }
+
+        .tl-card {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .tl-dot {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            white-space: nowrap;
+            flex-shrink: 0;
+            width: 52px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #d4af37;
+            border-radius: 8px;
+            padding: 4px 6px;
+        }
+
+        .tl-dot.end {
+            color: #1a1a1a;
+        }
+
+        .tl-body {
+            flex: 1;
+            background: #f5ebe0;
+            border-radius: 10px;
+            padding: 12px 14px;
+            border: 1px solid #e8d9c0;
+        }
+
+        .tl-header {
+            margin-bottom: 8px;
+        }
+
+        .tl-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .tl-teams {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .tl-team {
+            display: flex;
+            gap: 7px;
+            align-items: flex-start;
+            font-size: 0.78rem;
+            line-height: 1.4;
+        }
+
+        .tl-badge {
+            font-size: 0.68rem;
+            font-weight: 600;
+            padding: 1px 6px;
+            border-radius: 4px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .badge-band    { background: #d4af37; color: #1a1a1a; }
+        .badge-waiters { background: #f0e8d8; color: #6b4f2a; }
+        .badge-photo   { background: #e8dcc8; color: #3d2e1a; }
+        .badge-effects { background: #dfd0a0; color: #6b4f2a; }
+        .badge-kum     { background: #c8d8c0; color: #2a4a2a; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Nova Svečana Sala <span>Nešvil</span></h1>
+        </header>
+
+        <a href="index.html" class="back-link">
+            ← Nazad na glavnu stranu
+        </a>
+
+        <div class="timeline-section">
+            <h2>🕐 Program večeri</h2>
+            <div class="timeline">
+
+                <div class="tl-card">
+                    <div class="tl-dot">13:30</div>
+                    <div class="tl-body">
+                        <div class="tl-header">
+                            <span class="tl-title">Crkveno venčanje — Manastir Veluće</span>
+                        </div>
+                        <div class="tl-teams">
+                            <div class="tl-team"><span class="tl-badge badge-photo">Foto/Video</span><span class="tl-team-text">Fotografisanje i snimanje ceremonije</span></div>
+                            <div class="tl-team"><span class="tl-badge badge-kum">Kum</span><span class="tl-team-text">Poneti burme i 4 sveće</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tl-card">
+                    <div class="tl-dot">15:00</div>
+                    <div class="tl-body">
+                        <div class="tl-header">
+                            <span class="tl-title">Dolazak gostiju u svadbenu salu</span>
+                        </div>
+                        <div class="tl-teams">
+                            <div class="tl-team"><span class="tl-badge badge-band">Band</span><span class="tl-team-text">Puštanje ambijentalne muzike, degustacija predjela</span></div>
+                            <div class="tl-team"><span class="tl-badge badge-waiters">Konobari</span><span class="tl-team-text">Iznošenje predjela i točanje pića</span></div>
+                            <div class="tl-team"><span class="tl-badge badge-photo">Foto/Video</span><span class="tl-team-text">Fotografisanje gostiju pri dolasku</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tl-card">
+                    <div class="tl-dot">16:20</div>
+                    <div class="tl-body">
+                        <div class="tl-header">
+                            <span class="tl-title">Ulazak mladenaca</span>
+                        </div>
+                        <div class="tl-teams">
+                            <div class="tl-team"><span class="tl-badge badge-band">Band</span><span class="tl-team-text">Najava mladenaca i izvođenje ulazne pesme</span></div>
+                            <div class="tl-team"><span class="tl-badge badge-photo">Foto/Video</span><span class="tl-team-text">Snimanje ulaska</span></div>
+                            <div class="tl-team"><span class="tl-badge badge-waiters">Konobari</span><span class="tl-team-text">Priprema serviranja glavnog jela</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tl-card">
+                    <div class="tl-dot">17:00</div>
+                    <div class="tl-body">
+                        <div class="tl-header">
+                            <span class="tl-title">Civilno venčanje</span>
+                        </div>
+                        <div class="tl-teams">
+                            <div class="tl-team"><span class="tl-badge badge-band">Band</span><span class="tl-team-text">Kratka pauza i obrok</span></div>
+                            <div class="tl-team"><span class="tl-badge badge-waiters">Konobari</span><span class="tl-team-text">Diskretno serviranje</span></div>
+                            <div class="tl-team"><span class="tl-badge badge-photo">Foto/Video</span><span class="tl-team-text">Snimanje ceremonije</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tl-card">
+                    <div class="tl-dot">17:20</div>
+                    <div class="tl-body">
+                        <div class="tl-header">
+                            <span class="tl-title">Prvi ples</span>
+                        </div>
+                        <div class="tl-teams">
+                            <div class="tl-team"><span class="tl-badge badge-band">Band</span><span class="tl-team-text">Najava plesa i izvođenje pesme</span></div>
+                            <div class="tl-team"><span class="tl-badge badge-effects">Efekti</span><span class="tl-team-text">Puštanje niske magle i vatrometa</span></div>
+                            <div class="tl-team"><span class="tl-badge badge-photo">Foto/Video</span><span class="tl-team-text">Snimanje prvog plesa</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tl-card">
+                    <div class="tl-dot">18:45</div>
+                    <div class="tl-body">
+                        <div class="tl-header">
+                            <span class="tl-title">Kolo</span>
+                        </div>
+                        <div class="tl-teams">
+                            <div class="tl-team"><span class="tl-badge badge-band">Band</span><span class="tl-team-text">Izvođenje kola</span></div>
+                            <div class="tl-team"><span class="tl-badge badge-photo">Foto/Video</span><span class="tl-team-text">Snimanje kola</span></div>
+                            <div class="tl-team"><span class="tl-badge badge-waiters">Konobari</span><span class="tl-team-text">Priprema iznošenja pečenja</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tl-card">
+                    <div class="tl-dot">19:00</div>
+                    <div class="tl-body">
+                        <div class="tl-header">
+                            <span class="tl-title">Pauza i pečenje</span>
+                        </div>
+                        <div class="tl-teams">
+                            <div class="tl-team"><span class="tl-badge badge-band">Band</span><span class="tl-team-text">Pauza od 15 minuta</span></div>
+                            <div class="tl-team"><span class="tl-badge badge-waiters">Konobari</span><span class="tl-team-text">Iznošenje pečenja — prvo bendu, zatim gostima</span></div>
+                            <div class="tl-team"><span class="tl-badge badge-photo">Foto/Video</span><span class="tl-team-text">Dopunsko fotografisanje sa mladencima</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tl-card">
+                    <div class="tl-dot">21:00</div>
+                    <div class="tl-body">
+                        <div class="tl-header">
+                            <span class="tl-title">Torta</span>
+                        </div>
+                        <div class="tl-teams">
+                            <div class="tl-team"><span class="tl-badge badge-band">Band</span><span class="tl-team-text">Pauza od 10 minuta, preuzeta muzika</span></div>
+                            <div class="tl-team"><span class="tl-badge badge-waiters">Konobari</span><span class="tl-team-text">Iznošenje i sečenje torte</span></div>
+                            <div class="tl-team"><span class="tl-badge badge-effects">Efekti</span><span class="tl-team-text">Puštanje vatrometa i šampanjac tornja</span></div>
+                            <div class="tl-team"><span class="tl-badge badge-photo">Foto/Video</span><span class="tl-team-text">Snimanje sečenja torte</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tl-card">
+                    <div class="tl-dot end">23:00</div>
+                    <div class="tl-body">
+                        <div class="tl-header">
+                            <span class="tl-title">Kraj proslave</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
