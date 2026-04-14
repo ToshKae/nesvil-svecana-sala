@@ -157,6 +157,47 @@
         .badge-photo   { background: #e8dcc8; color: #3d2e1a; }
         .badge-effects { background: #dfd0a0; color: #6b4f2a; }
         .badge-kum     { background: #c8d8c0; color: #2a4a2a; }
+
+        .tl-section {
+            margin-bottom: 8px;
+        }
+
+        .tl-section summary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            user-select: none;
+            list-style: none;
+            font-family: 'Playfair Display', serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #b8942a;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 8px 0;
+            margin-bottom: 8px;
+            border-bottom: 1px solid rgba(212,175,55,0.3);
+        }
+
+        .tl-section summary::-webkit-details-marker { display: none; }
+
+        .tl-chevron {
+            width: 16px;
+            height: 16px;
+            color: #d4af37;
+            flex-shrink: 0;
+            transition: transform 0.2s ease;
+        }
+
+        .tl-section[open] .tl-chevron {
+            transform: rotate(90deg);
+        }
+
+        .tl-section-content {
+            overflow: hidden;
+        }
     </style>
 </head>
 <body>
@@ -172,6 +213,13 @@
         <div class="timeline-section">
             <h2>🕐 Program svadbe</h2>
             <div class="timeline">
+
+                <details class="tl-section">
+                    <summary>
+                        <svg class="tl-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                        Pre sale
+                    </summary>
+                    <div class="tl-section-content">
 
                 <div class="tl-card">
                     <div class="tl-dot">12:00</div>
@@ -199,6 +247,16 @@
                     </div>
                 </div>
 
+                    </div>
+                </details>
+
+                <details class="tl-section" open>
+                    <summary>
+                        <svg class="tl-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                        U sali
+                    </summary>
+                    <div class="tl-section-content">
+
                 <div class="tl-card">
                     <div class="tl-dot">15:00</div>
                     <div class="tl-body">
@@ -215,6 +273,19 @@
                 </div>
 
                 <div class="tl-card">
+                    <div class="tl-dot">16:00</div>
+                    <div class="tl-body">
+                        <div class="tl-header">
+                            <span class="tl-title">Uživo svirka — harmonika</span>
+                        </div>
+                        <div class="tl-teams">
+                            <div class="tl-team"><span class="tl-badge badge-band">Bend</span><span class="tl-team-text">Harmonika svira uživo uz meze i aperitiv</span></div>
+                            <div class="tl-team"><span class="tl-badge badge-kum">Ostalo</span><span class="tl-team-text">Rasveta — smanjiti svetlo u sali</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tl-card">
                     <div class="tl-dot">16:20</div>
                     <div class="tl-body">
                         <div class="tl-header">
@@ -224,7 +295,7 @@
                             <div class="tl-team"><span class="tl-badge badge-band">Bend</span><span class="tl-team-text">Najava mladenaca i izvođenje ulazne pesme</span></div>
                             <div class="tl-team"><span class="tl-badge badge-photo">Foto/Video</span><span class="tl-team-text">Snimanje ulaska</span></div>
                             <div class="tl-team"><span class="tl-badge badge-waiters">Konobari</span><span class="tl-team-text">Priprema serviranja glavnog jela</span></div>
-                            <div class="tl-team"><span class="tl-badge badge-kum">Ostalo</span><span class="tl-team-text">Rasveta — zamračiti salu pre ulaska mladenaca</span></div>
+                            <div class="tl-team"><span class="tl-badge badge-kum">Ostalo</span><span class="tl-team-text">Rasveta — reflektor na ulaz mladenaca</span></div>
                         </div>
                     </div>
                 </div>
@@ -312,8 +383,56 @@
                     </div>
                 </div>
 
+                    </div>
+                </details>
+
             </div>
         </div>
     </div>
+    <script>
+        function animateClose(details) {
+            const content = details.querySelector('.tl-section-content');
+            const start = content.scrollHeight;
+            content.style.height = start + 'px';
+            requestAnimationFrame(() => {
+                content.style.transition = 'height 0.3s ease';
+                content.style.height = '0px';
+                content.addEventListener('transitionend', () => {
+                    details.open = false;
+                    content.style.height = '';
+                    content.style.transition = '';
+                }, { once: true });
+            });
+        }
+
+        function animateOpen(details) {
+            details.open = true;
+            const content = details.querySelector('.tl-section-content');
+            const end = content.scrollHeight;
+            content.style.height = '0px';
+            content.style.overflow = 'hidden';
+            requestAnimationFrame(() => {
+                content.style.transition = 'height 0.3s ease';
+                content.style.height = end + 'px';
+                content.addEventListener('transitionend', () => {
+                    content.style.height = '';
+                    content.style.transition = '';
+                    content.style.overflow = '';
+                }, { once: true });
+            });
+        }
+
+        document.querySelectorAll('.tl-section').forEach(details => {
+            details.addEventListener('click', e => {
+                if (!e.target.closest('summary')) return;
+                e.preventDefault();
+                if (details.open) {
+                    animateClose(details);
+                } else {
+                    animateOpen(details);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
