@@ -1,0 +1,16 @@
+const gosti = [
+  { ime: "Adžić Miloš",      sto: 3 },
+  { ime: "Avramović Ana",     sto: 1 },
+  { ime: "Banović Strahinja", sto: 3 },
+  { ime: "Bojić Marko",       sto: 2 },
+  { ime: "Dragović Uroš",     sto: 6 },
+  { ime: "Dumić Sofija",      sto: 5 },
+  { ime: "Janković Petra",    sto: 5 },
+  { ime: "Jovanović Dragan",  sto: 4 },
+  { ime: "Jovanović Milica",  sto: 4 },
+  { ime: "Marković Stefan",   sto: 2 },
+  { ime: "Milošević Jovana",  sto: 6 },
+  { ime: "Milošević Nikola",  sto: 6 },
+  { ime: "Todorović Ana",     sto: 1 },
+  { ime: "Tošić Nenad",       sto: 5 },
+]

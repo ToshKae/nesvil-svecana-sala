@@ -179,84 +179,96 @@
             ← Nazad na glavnu stranu
         </a>
 
-        <div class="seating-section">
-            <details class="seating-group" open>
-                <summary>
-                    <svg class="seating-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-                    <span class="seating-letter">A</span>
-                    <span class="seating-group-title">Adžić – Avramović</span>
-                    <span class="seating-count">2 gosta</span>
-                </summary>
-                <ul class="seating-names">
-                    <li><span>Adžić Miloš</span><span class="seating-table-num">Sto broj 3</span></li>
-                    <li><span>Avramović Ana</span><span class="seating-table-num">Sto broj 1</span></li>
-                </ul>
-            </details>
-            <details class="seating-group">
-                <summary>
-                    <svg class="seating-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-                    <span class="seating-letter">B</span>
-                    <span class="seating-group-title">Banović – Bojić</span>
-                    <span class="seating-count">2 gosta</span>
-                </summary>
-                <ul class="seating-names">
-                    <li><span>Banović Strahinja</span><span class="seating-table-num">Sto broj 3</span></li>
-                    <li><span>Bojić Marko</span><span class="seating-table-num">Sto broj 2</span></li>
-                </ul>
-            </details>
-            <details class="seating-group">
-                <summary>
-                    <svg class="seating-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-                    <span class="seating-letter">D</span>
-                    <span class="seating-group-title">Dragović – Dumić</span>
-                    <span class="seating-count">2 gosta</span>
-                </summary>
-                <ul class="seating-names">
-                    <li><span>Dumić Sofija</span><span class="seating-table-num">Sto broj 5</span></li>
-                    <li><span>Dragović Uroš</span><span class="seating-table-num">Sto broj 6</span></li>
-                </ul>
-            </details>
-            <details class="seating-group">
-                <summary>
-                    <svg class="seating-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-                    <span class="seating-letter">J</span>
-                    <span class="seating-group-title">Janković – Jovanović</span>
-                    <span class="seating-count">3 gosta</span>
-                </summary>
-                <ul class="seating-names">
-                    <li><span>Janković Petra</span><span class="seating-table-num">Sto broj 5</span></li>
-                    <li><span>Jovanović Dragan</span><span class="seating-table-num">Sto broj 4</span></li>
-                    <li><span>Jovanović Milica</span><span class="seating-table-num">Sto broj 4</span></li>
-                </ul>
-            </details>
-            <details class="seating-group">
-                <summary>
-                    <svg class="seating-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-                    <span class="seating-letter">M</span>
-                    <span class="seating-group-title">Marković – Milošević</span>
-                    <span class="seating-count">3 gosta</span>
-                </summary>
-                <ul class="seating-names">
-                    <li><span>Marković Stefan</span><span class="seating-table-num">Sto broj 2</span></li>
-                    <li><span>Milošević Jovana</span><span class="seating-table-num">Sto broj 6</span></li>
-                    <li><span>Milošević Nikola</span><span class="seating-table-num">Sto broj 6</span></li>
-                </ul>
-            </details>
-            <details class="seating-group">
-                <summary>
-                    <svg class="seating-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-                    <span class="seating-letter">T</span>
-                    <span class="seating-group-title">Todorović – Tošić</span>
-                    <span class="seating-count">2 gosta</span>
-                </summary>
-                <ul class="seating-names">
-                    <li><span>Todorović Ana</span><span class="seating-table-num">Sto broj 1</span></li>
-                    <li><span>Tošić Nenad</span><span class="seating-table-num">Sto broj 5</span></li>
-                </ul>
-            </details>
+        <div class="seating-section" id="seating-root"></div>
+
+        <hr style="border: none; border-top: 1px solid #e8d9c0; margin: 24px 0 16px;">
+        <p style="font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; color: #1a1a1a; text-align: center; margin-bottom: 16px;">Raspored stolova</p>
+        <!-- Koordinatni sistem: left=% od širine, top=% od visine (visina = padding-bottom = 70% širine) -->
+        <!-- Kolone (left%): 1=9 2=20.5 3=32 4=43.5 5=55 6=66.5 7=78 8=89.5 -->
+        <!-- Redovi (top% od visine): 1=12.86 2=30.71 3=48.57 4=66.43 5=84.29 -->
+        <div style="position:relative;width:100%;height:0;padding-bottom:70%;">
+            <!-- Red 1 -->
+            <div style="position:absolute;left:9%;top:12.86%;width:10%;aspect-ratio: 1;transform:translate(-50%,-50%);border-radius: 50%;border:3px solid #d4af37;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.75rem;font-weight:600;color:#d4af37;background:#fdf6f0;transition:all 0.2s ease;cursor:default;">24</div>
+            <div style="position:absolute;left:20.5%;top:12.86%;width:10%;aspect-ratio: 1;transform:translate(-50%,-50%);border-radius: 50%;border:3px solid #d4af37;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.75rem;font-weight:600;color:#d4af37;background:#fdf6f0;transition:all 0.2s ease;cursor:default;">21</div>
+            <div style="position:absolute;left:32%;top:12.86%;width:10%;aspect-ratio: 1;transform:translate(-50%,-50%);border-radius: 50%;border:3px solid #d4af37;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.75rem;font-weight:600;color:#d4af37;background:#fdf6f0;transition:all 0.2s ease;cursor:default;">18</div>
+            <div style="position:absolute;left:43.5%;top:12.86%;width:10%;aspect-ratio: 1;transform:translate(-50%,-50%);border-radius: 50%;border:3px solid #d4af37;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.75rem;font-weight:600;color:#d4af37;background:#fdf6f0;transition:all 0.2s ease;cursor:default;">15</div>
+            <div style="position:absolute;left:55%;top:12.86%;width:10%;aspect-ratio: 1;transform:translate(-50%,-50%);border-radius: 50%;border:3px solid #d4af37;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.75rem;font-weight:600;color:#d4af37;background:#fdf6f0;transition:all 0.2s ease;cursor:default;">12</div>
+            <div style="position:absolute;left:66.5%;top:12.86%;width:10%;aspect-ratio: 1;transform:translate(-50%,-50%);border-radius: 50%;border:3px solid #d4af37;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.75rem;font-weight:600;color:#d4af37;background:#fdf6f0;transition:all 0.2s ease;cursor:default;">9</div>
+            <div style="position:absolute;left:78%;top:12.86%;width:10%;aspect-ratio: 1;transform:translate(-50%,-50%);border-radius: 50%;border:3px solid #d4af37;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.75rem;font-weight:600;color:#d4af37;background:#fdf6f0;transition:all 0.2s ease;cursor:default;">6</div>
+            <div style="position:absolute;left:89.5%;top:12.86%;width:10%;aspect-ratio: 1;transform:translate(-50%,-50%);border-radius: 50%;border:3px solid #d4af37;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.75rem;font-weight:600;color:#d4af37;background:#fdf6f0;transition:all 0.2s ease;cursor:default;">3</div>
+            <!-- Stub između 12 i 11 (col 5, sredina između redova 1 i 2) -->
+            <div style="position:absolute;left:55%;top:21.79%;width:4%;aspect-ratio: 1;transform:translate(-50%,-50%);background:#8b7355;border-radius:3px;cursor:default;" title="Stub"></div>
+            <!-- Red 2 -->
+            <div style="position:absolute;left:9%;top:30.71%;width:10%;aspect-ratio: 1;transform:translate(-50%,-50%);border-radius: 50%;border:3px solid #d4af37;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.75rem;font-weight:600;color:#d4af37;background:#fdf6f0;transition:all 0.2s ease;cursor:default;">23</div>
+            <div style="position:absolute;left:20.5%;top:30.71%;width:10%;aspect-ratio: 1;transform:translate(-50%,-50%);border-radius: 50%;border:3px solid #d4af37;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.75rem;font-weight:600;color:#d4af37;background:#fdf6f0;transition:all 0.2s ease;cursor:default;">20</div>
+            <div style="position:absolute;left:32%;top:30.71%;width:10%;aspect-ratio: 1;transform:translate(-50%,-50%);border-radius: 50%;border:3px solid #d4af37;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.75rem;font-weight:600;color:#d4af37;background:#fdf6f0;transition:all 0.2s ease;cursor:default;">17</div>
+            <div style="position:absolute;left:43.5%;top:30.71%;width:10%;aspect-ratio: 1;transform:translate(-50%,-50%);border-radius: 50%;border:3px solid #d4af37;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.75rem;font-weight:600;color:#d4af37;background:#fdf6f0;transition:all 0.2s ease;cursor:default;">14</div>
+            <div style="position:absolute;left:55%;top:30.71%;width:10%;aspect-ratio: 1;transform:translate(-50%,-50%);border-radius: 50%;border:3px solid #d4af37;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.75rem;font-weight:600;color:#d4af37;background:#fdf6f0;transition:all 0.2s ease;cursor:default;">11</div>
+            <div style="position:absolute;left:66.5%;top:30.71%;width:10%;aspect-ratio: 1;transform:translate(-50%,-50%);border-radius: 50%;border:3px solid #d4af37;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.75rem;font-weight:600;color:#d4af37;background:#fdf6f0;transition:all 0.2s ease;cursor:default;">8</div>
+            <div style="position:absolute;left:78%;top:30.71%;width:10%;aspect-ratio: 1;transform:translate(-50%,-50%);border-radius: 50%;border:3px solid #d4af37;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.75rem;font-weight:600;color:#d4af37;background:#fdf6f0;transition:all 0.2s ease;cursor:default;">5</div>
+            <div style="position:absolute;left:89.5%;top:30.71%;width:10%;aspect-ratio: 1;transform:translate(-50%,-50%);border-radius: 50%;border:3px solid #d4af37;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.75rem;font-weight:600;color:#d4af37;background:#fdf6f0;transition:all 0.2s ease;cursor:default;">2</div>
+            <!-- Red 3 -->
+            <div style="position:absolute;left:9%;top:48.57%;width:10%;aspect-ratio: 1;transform:translate(-50%,-50%);border-radius: 50%;border:3px solid #d4af37;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.75rem;font-weight:600;color:#d4af37;background:#fdf6f0;transition:all 0.2s ease;cursor:default;">22</div>
+            <div style="position:absolute;left:20.5%;top:48.57%;width:10%;aspect-ratio: 1;transform:translate(-50%,-50%);border-radius: 50%;border:3px solid #d4af37;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.75rem;font-weight:600;color:#d4af37;background:#fdf6f0;transition:all 0.2s ease;cursor:default;">19</div>
+            <div style="position:absolute;left:32%;top:48.57%;width:10%;aspect-ratio: 1;transform:translate(-50%,-50%);border-radius: 50%;border:3px solid #d4af37;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.75rem;font-weight:600;color:#d4af37;background:#fdf6f0;transition:all 0.2s ease;cursor:default;">16</div>
+            <div style="position:absolute;left:43.5%;top:48.57%;width:10%;aspect-ratio: 1;transform:translate(-50%,-50%);border-radius: 50%;border:3px solid #d4af37;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.75rem;font-weight:600;color:#d4af37;background:#fdf6f0;transition:all 0.2s ease;cursor:default;">13</div>
+            <!-- Stub na mestu stola 10 (stub u sali) -->
+            <div style="position:absolute;left:55%;top:48.57%;width:4%;aspect-ratio: 1;transform:translate(-50%,-50%);background:#8b7355;border-radius:3px;cursor:default;" title="Stub"></div>
+            <div style="position:absolute;left:66.5%;top:48.57%;width:10%;aspect-ratio: 1;transform:translate(-50%,-50%);border-radius: 50%;border:3px solid #d4af37;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.75rem;font-weight:600;color:#d4af37;background:#fdf6f0;transition:all 0.2s ease;cursor:default;">7</div>
+            <div style="position:absolute;left:78%;top:48.57%;width:10%;aspect-ratio: 1;transform:translate(-50%,-50%);border-radius: 50%;border:3px solid #d4af37;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.75rem;font-weight:600;color:#d4af37;background:#fdf6f0;transition:all 0.2s ease;cursor:default;">4</div>
+            <div style="position:absolute;left:89.5%;top:48.57%;width:10%;aspect-ratio: 1;transform:translate(-50%,-50%);border-radius: 50%;border:3px solid #d4af37;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.75rem;font-weight:600;color:#d4af37;background:#fdf6f0;transition:all 0.2s ease;cursor:default;">1</div>
+            <!-- Redovi 4 i 5: dodatni stolovi ispod kolona 1 i 2 -->
+            <div style="position:absolute;left:9%;top:66.43%;width:10%;aspect-ratio: 1;transform:translate(-50%,-50%);border-radius: 50%;border:3px solid #d4af37;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.75rem;font-weight:600;color:#d4af37;background:#fdf6f0;transition:all 0.2s ease;cursor:default;">25</div>
+            <div style="position:absolute;left:20.5%;top:66.43%;width:10%;aspect-ratio: 1;transform:translate(-50%,-50%);border-radius: 50%;border:3px solid #d4af37;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.75rem;font-weight:600;color:#d4af37;background:#fdf6f0;transition:all 0.2s ease;cursor:default;">27</div>
+        </div>
+        <div style="display: flex; justify-content: flex-end; margin-top: -13%; padding-right: 4px;">
+            <div style="width: calc(12.5% - 4px); height: 80px; border: 3px solid #d4af37; border-radius: 6px; background: #f0e8d8; display: flex; align-items: center; justify-content: center; font-size: 0.55rem; color: #6b4f2a; font-weight: 600; letter-spacing: 0.05em; text-align: center; line-height: 1.3;">mlad.<br>sto</div>
         </div>
     </div>
+    <script src="sedanje-data.js"></script>
     <script>
+        const collator = new Intl.Collator('sr', { sensitivity: 'base' });
+        const sorted = [...gosti].sort((a, b) => collator.compare(a.ime, b.ime));
+
+        const groups = {};
+        sorted.forEach(g => {
+            const slovo = g.ime[0].toUpperCase();
+            if (!groups[slovo]) groups[slovo] = [];
+            groups[slovo].push(g);
+        });
+
+        const root = document.getElementById('seating-root');
+        let prvi = true;
+
+        Object.keys(groups).sort((a, b) => collator.compare(a, b)).forEach(slovo => {
+            const lista = groups[slovo];
+            const prvi_ime = lista[0].ime.split(' ')[0];
+            const zadnji_ime = lista[lista.length - 1].ime.split(' ')[0];
+            const naslov = lista.length === 1 ? lista[0].ime.split(' ')[0] : `${prvi_ime} – ${zadnji_ime}`;
+            const brGostiju = lista.length === 1 ? '1 gost' : `${lista.length} gosta`;
+
+            const details = document.createElement('details');
+            details.className = 'seating-group';
+            if (prvi) { details.open = true; prvi = false; }
+
+            details.innerHTML = `
+                <summary>
+                    <svg class="seating-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                    <span class="seating-letter">${slovo}</span>
+                    <span class="seating-group-title">${naslov}</span>
+                    <span class="seating-count">${brGostiju}</span>
+                </summary>
+                <ul class="seating-names">
+                    ${lista.map(g => `
+                    <li style="cursor: pointer;" data-sto="${g.sto}">
+                        <span>${g.ime}</span>
+                        <span class="seating-table-num">Sto broj ${g.sto}</span>
+                    </li>`).join('')}
+                </ul>`;
+
+            root.appendChild(details);
+        });
+
         function animateClose(details) {
             const content = details.querySelector('ul');
             const start = content.scrollHeight;
@@ -289,18 +301,46 @@
             });
         }
 
-        document.querySelectorAll('.seating-group').forEach(details => {
-            details.addEventListener('click', e => {
-                e.preventDefault();
-                if (details.open) {
-                    animateClose(details);
-                } else {
-                    document.querySelectorAll('.seating-group').forEach(other => {
-                        if (other !== details && other.open) animateClose(other);
-                    });
-                    animateOpen(details);
-                }
+        // Dodaj data-table atribute na krugove
+        const circles = document.querySelectorAll('[style*="border-radius: 50%"]');
+        circles.forEach(c => c.setAttribute('data-table', c.textContent.trim()));
+
+let activeTable = null;
+
+        function highlightTable(sto) {
+            circles.forEach(c => {
+                c.style.background = '#fdf6f0';
+                c.style.color = '#d4af37';
             });
+            if (activeTable === sto) {
+                activeTable = null;
+                return;
+            }
+            activeTable = sto;
+            const target = document.querySelector(`[data-table="${sto}"]`);
+            if (target) {
+                target.style.background = '#d4af37';
+                target.style.color = '#1a1a1a';
+            }
+        }
+
+        root.addEventListener('click', e => {
+            const li = e.target.closest('li[data-sto]');
+            if (li) {
+                highlightTable(parseInt(li.dataset.sto));
+                return;
+            }
+            const details = e.target.closest('details');
+            if (!details) return;
+            e.preventDefault();
+            if (details.open) {
+                animateClose(details);
+            } else {
+                root.querySelectorAll('details').forEach(other => {
+                    if (other !== details && other.open) animateClose(other);
+                });
+                animateOpen(details);
+            }
         });
     </script>
 </body>
