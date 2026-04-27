@@ -60,11 +60,78 @@
             color: #d4af37;
         }
 
+        .search-wrap {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 16px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            border: 2px solid #d4af37;
+            border-radius: 8px;
+            background: #fdf6f0;
+            color: #1a1a1a;
+            outline: none;
+        }
+
+        .search-input::placeholder {
+            color: #bbb;
+        }
+
+        .search-input:focus {
+            border-color: #b8932a;
+            box-shadow: 0 0 0 3px rgba(212,175,55,0.15);
+        }
+
+        .search-result-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            border-bottom: 1px solid #e8d9c0;
+            cursor: pointer;
+            transition: background 0.15s ease;
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-item:hover {
+            background: #f5ebe0;
+        }
+
+        .search-result-name {
+            font-size: 0.9rem;
+            color: #1a1a1a;
+        }
+
+        .search-result-sto {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #d4af37;
+            background: #fdf6f0;
+            border: 1px solid #d4af37;
+            border-radius: 5px;
+            padding: 2px 8px;
+        }
+
+        .search-no-result {
+            padding: 12px 16px;
+            font-size: 0.85rem;
+            color: #999;
+            text-align: center;
+        }
+
         .seating-section {
             width: 100%;
             border: 3px solid #d4af37;
             border-radius: 12px;
-            overflow: hidden;
+            overflow-y: auto;
+            max-height: 416px;
             box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
             background: #fdf6f0;
             text-align: left;
@@ -178,6 +245,10 @@
         <a href="index.html" class="back-link">
             ← Nazad na glavnu stranu
         </a>
+
+        <div class="search-wrap">
+            <input class="search-input" id="search-input" type="text" placeholder="Ukucaj ime ili prezime…" autocomplete="off" autocorrect="off" spellcheck="false">
+        </div>
 
         <div class="seating-section" id="seating-root"></div>
 
@@ -323,6 +394,45 @@ let activeTable = null;
                 target.style.color = '#1a1a1a';
             }
         }
+
+        // Search
+        function normalize(s) {
+            return s.toLowerCase().replace(/đ/g, 'd').normalize('NFD').replace(/[̀-ͯ]/g, '');
+        }
+
+        const searchInput = document.getElementById('search-input');
+        const accordionHTML = root.innerHTML;
+
+        function showAccordion() {
+            root.innerHTML = accordionHTML;
+        }
+
+        function showSearchResults(q) {
+            const matches = gosti.filter(g => normalize(g.ime).includes(normalize(q))).slice(0, 10);
+            root.innerHTML = '';
+            if (matches.length === 0) {
+                root.innerHTML = '<div class="search-no-result">Niko nije pronađen</div>';
+                return;
+            }
+            matches.forEach(g => {
+                const div = document.createElement('div');
+                div.className = 'search-result-item';
+                div.innerHTML = `<span class="search-result-name">${g.ime}</span><span class="search-result-sto">Sto broj ${g.sto}</span>`;
+                div.addEventListener('click', () => {
+                    highlightTable(g.sto);
+                    searchInput.value = g.ime;
+                    showAccordion();
+                    document.querySelector(`[data-table="${g.sto}"]`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                });
+                root.appendChild(div);
+            });
+        }
+
+        searchInput.addEventListener('input', () => {
+            const q = searchInput.value.trim().toLowerCase();
+            if (q.length < 1) { showAccordion(); return; }
+            showSearchResults(q);
+        });
 
         root.addEventListener('click', e => {
             const li = e.target.closest('li[data-sto]');
