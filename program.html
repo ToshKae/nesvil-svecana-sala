@@ -198,6 +198,34 @@
         .tl-section-content {
             overflow: hidden;
         }
+
+        .tl-date-label {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #b8942a;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 4px 0 8px 0;
+            margin-top: 4px;
+            border-bottom: 1px dashed rgba(212,175,55,0.25);
+            margin-bottom: 14px;
+        }
+
+        .tl-date-label:first-child {
+            margin-top: 0;
+        }
+
+        .tl-note {
+            font-size: 0.72rem;
+            color: #999;
+            font-style: italic;
+            margin: 4px 0 16px 0;
+            padding: 8px 12px;
+            background: #f0e8e0;
+            border-radius: 8px;
+            border-left: 3px solid #d4c4a8;
+        }
     </style>
 </head>
 <body>
@@ -216,9 +244,11 @@
                 <details class="tl-section">
                     <summary>
                         <svg class="tl-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-                        27.05 — Prijava venčanja
+                        Pre venčanja (27.05 / 29.05 / 30.05)
                     </summary>
                     <div class="tl-section-content">
+
+                <div class="tl-date-label">27. maj — Prijava venčanja</div>
 
                 <div class="tl-card">
                     <div class="tl-dot">08:00</div>
@@ -232,15 +262,7 @@
                     </div>
                 </div>
 
-                    </div>
-                </details>
-
-                <details class="tl-section">
-                    <summary>
-                        <svg class="tl-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-                        29.05 — Slikanje Beograd
-                    </summary>
-                    <div class="tl-section-content">
+                <div class="tl-date-label">29. maj — Slikanje Beograd</div>
 
                 <div class="tl-card">
                     <div class="tl-dot">15:00</div>
@@ -266,29 +288,30 @@
                     </div>
                 </div>
 
-                    </div>
-                </details>
-
-                <details class="tl-section">
-                    <summary>
-                        <svg class="tl-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-                        31.05 — Raspored, pre sale
-                    </summary>
-                    <div class="tl-section-content">
-
+                <div class="tl-date-label">30. maj — Tobolac</div>
                 <div class="tl-card">
-                    <div class="tl-dot">11:00</div>
+                    <div class="tl-dot">14:00</div>
                     <div class="tl-body">
                         <div class="tl-header">
-                            <span class="tl-title">Pripreme pre dolaska gostiju</span>
+                            <span class="tl-title">Priprema za sutra</span>
                         </div>
                         <div class="tl-teams">
-                            <div class="tl-team"><span class="tl-badge badge-kum">Ostalo</span><span class="tl-team-text">Okupljanje svatova kod mladoženje</span></div>
-                            <div class="tl-team"><span class="tl-badge badge-kum">Ostalo</span><span class="tl-team-text">Priprema sale sa dekoracijama</span></div>
-                            <div class="tl-team"><span class="tl-badge badge-kum">Ostalo</span><span class="tl-team-text">Odneti naše posude u salu</span></div>
+                            <div class="tl-team"><span class="tl-badge badge-kum">Ostalo</span><span class="tl-team-text">Organizovati dekoraciju sale</span></div>
+                            <div class="tl-team"><span class="tl-badge badge-kum">Ostalo</span><span class="tl-team-text">Odneti cveće i posude u salu</span></div>
+                            <div class="tl-team"><span class="tl-badge badge-kum">Ostalo</span><span class="tl-team-text">Postavljanje šatora u dvorište</span></div>
                         </div>
                     </div>
                 </div>
+
+                    </div>
+                </details>
+
+                <details class="tl-section" open>
+                    <summary>
+                        <svg class="tl-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                        Dan svadbe — 31.05
+                    </summary>
+                    <div class="tl-section-content">
 
                 <div class="tl-card">
                     <div class="tl-dot">13:30</div>
@@ -302,16 +325,6 @@
                         </div>
                     </div>
                 </div>
-
-                    </div>
-                </details>
-
-                <details class="tl-section" open>
-                    <summary>
-                        <svg class="tl-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-                        31.05 — Raspored, u sali
-                    </summary>
-                    <div class="tl-section-content">
 
                 <div class="tl-card">
                     <div class="tl-dot">15:00</div>
