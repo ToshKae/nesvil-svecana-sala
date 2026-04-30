@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
     <style>
         * {
             margin: 0;
@@ -733,6 +732,7 @@
         <section class="map-section">
             <div class="map-container">
                 <div id="map" style="width:100%;height:323px;"></div>
+                <iframe id="map-fallback" src="https://www.openstreetmap.org/export/embed.html?bbox=21.3447%2C43.5877%2C21.3567%2C43.5957&layer=mapnik&marker=43.591722%2C21.350723" style="width:100%;height:323px;border:none;display:none;" loading="lazy"></iframe>
             </div>
         </section>
 
@@ -813,28 +813,40 @@
             </div>
         </footer>
     </div>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
-    <script>
-        const map = L.map('map');
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" onerror="showMapFallback()"></script>
+<script>
+        function showMapFallback() {
+            document.getElementById('map').style.display = 'none';
+            document.getElementById('map-fallback').style.display = 'block';
+        }
+
+        if (typeof L === 'undefined') { showMapFallback(); } else {
+
+        const map = L.map('map').setView([43.5895, 21.347], 15);
+        let tileErrors = 0;
+        const tileLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
             attribution: '© OpenStreetMap contributors © CARTO'
-        }).addTo(map);
-        L.Routing.control({
-            waypoints: [
-                L.latLng(43.5863906, 21.3414493),
-                L.latLng(43.588906, 21.348473),
-                L.latLng(43.591722, 21.350723)
-            ],
-            routeWhileDragging: false,
-            show: false,
-            addWaypoints: false,
-            draggableWaypoints: false,
-            fitSelectedRoutes: true,
-            lineOptions: {
-                styles: [{ color: '#4285f4', weight: 5, opacity: 0.85 }]
-            }
-        }).addTo(map);
+        });
+        tileLayer.on('tileerror', function() {
+            tileErrors++;
+            if (tileErrors >= 3) showMapFallback();
+        });
+        tileLayer.addTo(map);
+        const routePoints = [
+            [43.5863906, 21.3414493],
+            [43.588906, 21.348473],
+            [43.591722, 21.350723]
+        ];
+        L.polyline(routePoints, { color: '#4285f4', weight: 5, opacity: 0.85 }).addTo(map);
+
+        const distanceIcon = (text, anchor) => L.divIcon({
+            className: '',
+            html: `<div style="background:#fff;color:#1a1a1a;font-size:0.7rem;font-weight:600;padding:2px 7px;border-radius:10px;white-space:nowrap;box-shadow:0 1px 4px rgba(0,0,0,0.3);border:1px solid #4285f4;">${text}</div>`,
+            iconSize: null,
+            iconAnchor: anchor
+        });
+        L.marker([43.5876483, 21.3449611], { icon: distanceIcon('650 m', [-5, 4]), interactive: false }).addTo(map);
+        L.marker([43.591370, 21.350442], { icon: distanceIcon('350 m', [-5, 10]), interactive: false }).addTo(map);
         L.marker([43.5863906, 21.3414493])
             .bindTooltip('Shell Kruševac', { permanent: true, direction: 'top' })
             .addTo(map);
@@ -844,6 +856,8 @@
         L.marker([43.591722, 21.350723])
             .bindTooltip('Nešvil Sala', { permanent: true, direction: 'top' })
             .addTo(map);
+
+        } // end if L defined
     </script>
     <script>
         // Countdown to May 31, 2026 at 15:00
