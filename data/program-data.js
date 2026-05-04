@@ -48,7 +48,7 @@ const programData = [
       ]},
       { time: "17:00", title: "Građansko venčanje", teams: [
         { badge: "band",    text: "Kratka pauza i obrok" },
-        { badge: "waiters", text: "Diskretno serviranje glavnog jela" },
+        { badge: "waiters", text: "Serviranje glavnog jela" },
         { badge: "photo",   text: "Snimanje ceremonije" }
       ]},
       { time: "17:20", title: "Prvi ples", teams: [
