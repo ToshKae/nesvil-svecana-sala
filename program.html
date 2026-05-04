@@ -23,7 +23,7 @@
         }
 
         .container {
-            max-width: 500px;
+            max-width: 550px;
             margin: 0 auto;
             padding: 25px 20px;
             text-align: center;
@@ -238,6 +238,44 @@
             ← Nazad na glavnu stranu
         </a>
 
+        <div id="role-filter" style="
+            display: flex;
+            width: 100%;
+            margin-bottom: 16px;
+            border: 1px solid #e8d9c0;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f5ebe0;
+        ">
+            <button data-value="all"     class="seg-btn seg-active">Svi</button>
+            <button data-value="band"    class="seg-btn">Bend</button>
+            <button data-value="waiters" class="seg-btn">Konobari</button>
+            <button data-value="photo"   class="seg-btn">Foto</button>
+            <button data-value="effects" class="seg-btn">Efekti</button>
+            <button data-value="kum"     class="seg-btn">Ostalo</button>
+        </div>
+        <style>
+            .seg-btn {
+                flex: 1;
+                padding: 8px 4px;
+                font-family: 'Montserrat', sans-serif;
+                font-size: 0.72rem;
+                font-weight: 500;
+                color: #6b4f2a;
+                background: transparent;
+                border: none;
+                border-right: 1px solid #e8d9c0;
+                cursor: pointer;
+                transition: background 0.15s, color 0.15s;
+            }
+            .seg-btn:last-child { border-right: none; }
+            .seg-btn.seg-active {
+                background: #c0b8b0;
+                color: #1a1a1a;
+                font-weight: 600;
+            }
+        </style>
+
         <div class="timeline-section">
             <div class="timeline">
 
@@ -321,7 +359,7 @@
                         </div>
                         <div class="tl-teams">
                             <div class="tl-team"><span class="tl-badge badge-photo">Foto/Video</span><span class="tl-team-text">Fotografisanje i snimanje ceremonije</span></div>
-                            <div class="tl-team"><span class="tl-badge badge-kum">Ostalo</span><span class="tl-team-text">Poneti burme, 4 sveće, platno i novac za crkveno venčanje</span></div>
+                            <div class="tl-team"><span class="tl-badge badge-kum">Ostalo</span><span class="tl-team-text">Poneti burme, 4 sveće, platno i novac</span></div>
                         </div>
                     </div>
                 </div>
@@ -333,8 +371,8 @@
                             <span class="tl-title">Dolazak gostiju u svadbenu salu</span>
                         </div>
                         <div class="tl-teams">
-                            <div class="tl-team"><span class="tl-badge badge-band">Bend</span><span class="tl-team-text">Puštanje ambijentalne muzike, degustacija predjela</span></div>
-                            <div class="tl-team"><span class="tl-badge badge-waiters">Konobari</span><span class="tl-team-text">Iznošenje predjela i točanje pića — prvo bendu, zatim gostima</span></div>
+                            <div class="tl-team"><span class="tl-badge badge-band">Bend</span><span class="tl-team-text">Puštanje ambijentalne muzike</span></div>
+                            <div class="tl-team"><span class="tl-badge badge-waiters">Konobari</span><span class="tl-team-text">Iznošenje predjela i točanje pića</span></div>
                             <div class="tl-team"><span class="tl-badge badge-photo">Foto/Video</span><span class="tl-team-text">Fotografisanje gostiju pri dolasku</span></div>
                             <div class="tl-team"><span class="tl-badge badge-kum">Ostalo</span><span class="tl-team-text">Kićenje svatova i raspoređivanje</span></div>
                         </div>
@@ -345,25 +383,15 @@
                     <div class="tl-dot">16:00</div>
                     <div class="tl-body">
                         <div class="tl-header">
-                            <span class="tl-title">Aperitiv uz harmoniku</span>
+                            <span class="tl-title">Priprema i ulazak mladenaca</span>
                         </div>
                         <div class="tl-teams">
-                            <div class="tl-team"><span class="tl-badge badge-band">Bend</span><span class="tl-team-text">Harmonika svira uživo uz meze i aperitiv</span></div>
-                            <div class="tl-team"><span class="tl-badge badge-kum">Ostalo</span><span class="tl-team-text">Rasveta — smanjiti svetlo u sali</span></div>
+                            <div class="tl-team"><span style="color:#1a1a1a;font-size:0.78rem;font-weight:600;margin-right:4px;white-space:nowrap;">16:00</span><span class="tl-badge badge-band">Bend</span><span class="tl-team-text">Harmonika počinje da svira instrumentale</span></div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="tl-card">
-                    <div class="tl-dot">16:20</div>
-                    <div class="tl-body">
-                        <div class="tl-header">
-                            <span class="tl-title">Ulazak mladenaca</span>
-                        </div>
+                        <div data-divider style="border-top:1px solid #e8d9c0;margin:8px 0;"></div>
                         <div class="tl-teams">
-                            <div class="tl-team"><span class="tl-badge badge-band">Bend</span><span class="tl-team-text">Najava mladenaca i izvođenje ulazne pesme</span></div>
+                            <div class="tl-team"><span style="color:#1a1a1a;font-size:0.78rem;font-weight:600;margin-right:4px;white-space:nowrap;">16:20</span><span class="tl-badge badge-band">Bend</span><span class="tl-team-text">Najava mladenaca i izvođenje ulazne pesme</span></div>
                             <div class="tl-team"><span class="tl-badge badge-photo">Foto/Video</span><span class="tl-team-text">Snimanje ulaska</span></div>
-                            <div class="tl-team"><span class="tl-badge badge-waiters">Konobari</span><span class="tl-team-text">Priprema serviranja glavnog jela</span></div>
                             <div class="tl-team"><span class="tl-badge badge-kum">Ostalo</span><span class="tl-team-text">Rasveta — reflektor na ulaz mladenaca</span></div>
                         </div>
                     </div>
@@ -377,7 +405,7 @@
                         </div>
                         <div class="tl-teams">
                             <div class="tl-team"><span class="tl-badge badge-band">Bend</span><span class="tl-team-text">Kratka pauza i obrok</span></div>
-                            <div class="tl-team"><span class="tl-badge badge-waiters">Konobari</span><span class="tl-team-text">Diskretno serviranje</span></div>
+                            <div class="tl-team"><span class="tl-badge badge-waiters">Konobari</span><span class="tl-team-text">Diskretno serviranje glavnog jela</span></div>
                             <div class="tl-team"><span class="tl-badge badge-photo">Foto/Video</span><span class="tl-team-text">Snimanje ceremonije</span></div>
                         </div>
                     </div>
@@ -393,6 +421,7 @@
                             <div class="tl-team"><span class="tl-badge badge-band">Bend</span><span class="tl-team-text">Najava plesa i izvođenje pesme</span></div>
                             <div class="tl-team"><span class="tl-badge badge-effects">Efekti</span><span class="tl-team-text">Puštanje niske magle i vatrometa</span></div>
                             <div class="tl-team"><span class="tl-badge badge-photo">Foto/Video</span><span class="tl-team-text">Snimanje prvog plesa</span></div>
+                            <div class="tl-team"><span class="tl-badge badge-waiters">Konobari</span><span class="tl-team-text">Prijem i skladištenje torte</span></div>
                         </div>
                     </div>
                 </div>
@@ -406,7 +435,6 @@
                         <div class="tl-teams">
                             <div class="tl-team"><span class="tl-badge badge-band">Bend</span><span class="tl-team-text">Izvođenje kola</span></div>
                             <div class="tl-team"><span class="tl-badge badge-photo">Foto/Video</span><span class="tl-team-text">Snimanje kola</span></div>
-                            <div class="tl-team"><span class="tl-badge badge-waiters">Konobari</span><span class="tl-team-text">Priprema iznošenja pečenja</span></div>
                         </div>
                     </div>
                 </div>
@@ -421,7 +449,6 @@
                             <div class="tl-team"><span class="tl-badge badge-band">Bend</span><span class="tl-team-text">Pauza od 15 minuta</span></div>
                             <div class="tl-team"><span class="tl-badge badge-waiters">Konobari</span><span class="tl-team-text">Iznošenje pečenja — prvo bendu, zatim gostima</span></div>
                             <div class="tl-team"><span class="tl-badge badge-photo">Foto/Video</span><span class="tl-team-text">Dopunsko fotografisanje sa mladencima</span></div>
-                            <div class="tl-team"><span class="tl-badge badge-kum">Ostalo</span><span class="tl-team-text">Dovoz torte i skladištenje u frižideru</span></div>
                         </div>
                     </div>
                 </div>
@@ -435,7 +462,7 @@
                         <div class="tl-teams">
                             <div class="tl-team"><span class="tl-badge badge-band">Bend</span><span class="tl-team-text">Pauza od 10 minuta, preuzeta muzika</span></div>
                             <div class="tl-team"><span class="tl-badge badge-waiters">Konobari</span><span class="tl-team-text">Iznošenje i sečenje torte</span></div>
-                            <div class="tl-team"><span class="tl-badge badge-effects">Efekti</span><span class="tl-team-text">Prvo vatromet uz tortu, zatim balončići uz šampanjac toranj</span></div>
+                            <div class="tl-team"><span class="tl-badge badge-effects">Efekti</span><span class="tl-team-text">1. Vatromet uz tortu, 2. Šampanjac toranj i baloni</span></div>
                             <div class="tl-team"><span class="tl-badge badge-photo">Foto/Video</span><span class="tl-team-text">Snimanje sečenja torte</span></div>
                         </div>
                     </div>
@@ -459,6 +486,7 @@
             </div>
         </div>
     </div>
+    <script src="program-filter.js"></script>
     <script>
         function animateClose(details) {
             const content = details.querySelector('.tl-section-content');
