@@ -848,10 +848,22 @@
         L.marker([43.5876483, 21.3449611], { icon: distanceIcon('650 m', [-5, 4]), interactive: false }).addTo(map);
         L.marker([43.591370, 21.350442], { icon: distanceIcon('350 m', [-5, 10]), interactive: false }).addTo(map);
         L.marker([43.5863906, 21.3414493])
-            .bindTooltip('Shell Kruševac', { permanent: true, direction: 'top' })
+            .bindTooltip('Shell Kruševac', { permanent: true, direction: 'bottom', offset: [0, 21] })
             .addTo(map);
+        const skretanjeIcon = L.divIcon({
+            className: '',
+            html: `<div style="position:relative;display:flex;flex-direction:column;align-items:center;">
+                <div style="background:#fff;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.35);overflow:hidden;width:120px;margin-bottom:4px;">
+                    <img src="data/skretanje-preview.jpg" style="width:120px;height:80px;object-fit:cover;display:block;" />
+                </div>
+                <div style="width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:8px solid #fff;filter:drop-shadow(0 2px 2px rgba(0,0,0,0.2));"></div>
+            </div>`,
+            iconAnchor: [60, 110],
+            iconSize: null
+        });
+        L.marker([43.589062, 21.346677], { icon: skretanjeIcon }).addTo(map);
         L.marker([43.588906, 21.348473])
-            .bindTooltip('Skretanje za Nešvil', { permanent: true, direction: 'top' })
+            .bindTooltip('Skretanje za Nešvil', { permanent: true, direction: 'bottom', offset: [7, 26] })
             .addTo(map);
         L.marker([43.591722, 21.350723])
             .bindTooltip('Nešvil Sala', { permanent: true, direction: 'top' })
