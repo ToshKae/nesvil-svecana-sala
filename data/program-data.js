@@ -1,12 +1,8 @@
 const programData = [
   {
-    title: "Pre venčanja (27 / 29 / 30.)",
+    title: "Pre venčanja (29.)",
     open: false,
     events: [
-      { dateLabel: "27. maj — Prijava venčanja" },
-      { time: "08:00", title: "Matična služba", teams: [
-        { badge: "kum", text: "Predaja uplatnice i potpisivanje svih zvaničnih dokumenata za venčanje" }
-      ]},
       { dateLabel: "29. maj — Slikanje Beograd" },
       { time: "15:00", title: "Fotografisanje u stanu — Omladinskih brigada 166", teams: [
         { badge: "photo", text: "Fotografisanje u stanu" }
@@ -14,12 +10,6 @@ const programData = [
       { time: "16:00", title: "Fotografisanje u Topčiderskom parku", teams: [
         { badge: "photo", text: "Fotografisanje u trajanju od sat i po" }
       ]},
-      { dateLabel: "30. maj — Tobolac" },
-      { time: "14:00", title: "Priprema za sutra", teams: [
-        { badge: "kum", text: "Organizovati dekoraciju sale" },
-        { badge: "kum", text: "Odneti cveće i posude u salu" },
-        { badge: "kum", text: "Postavljanje šatora u dvorište" }
-      ]}
     ]
   },
   {
