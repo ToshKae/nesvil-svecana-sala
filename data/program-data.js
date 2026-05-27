@@ -36,26 +36,16 @@ const programData = [
         { badge: "photo",   text: "Fotografisanje gostiju pri dolasku" },
         { badge: "kum",     text: "Kićenje svatova i raspoređivanje" }
       ]},
-      { time: "16:00", title: "Priprema i ulazak mladenaca", groups: [
-        { subtime: "16:00", teams: [
-          { badge: "band", text: "Harmonika počinje da svira instrumentale" }
-        ]},
-        { subtime: "16:20", teams: [
-          { badge: "band",  text: "Najava mladenaca i izvođenje ulazne pesme" },
-          { badge: "photo", text: "Snimanje ulaska" },
-          { badge: "kum",   text: "Rasveta — reflektor na ulaz mladenaca" }
-        ]}
+      { time: "16:20", title: "Ulazak mladenaca i Građansko venčanje", teams: [
+        { badge: "band",    text: "Najava mladenaca" },
+        { badge: "photo",   text: "Snimanje ulaska i ceremonije" },
+        { badge: "kum",     text: "Rasveta — reflektor na ulaz mladenaca" }
       ]},
-      { time: "17:00", title: "Građansko venčanje", teams: [
-        { badge: "band",    text: "Kratka pauza i obrok" },
-        { badge: "waiters", text: "Serviranje glavnog jela" },
-        { badge: "photo",   text: "Snimanje ceremonije" }
-      ]},
-      { time: "17:20", title: "Prvi ples", teams: [
-        { badge: "band",    text: "Najava plesa i izvođenje pesme" },
+      { time: "16:45", title: "Prvi ples", teams: [
+        { badge: "band",    text: "Poziv na ples i izvođenje pesme" },
         { badge: "effects", text: "Puštanje niske magle i vatrometa" },
         { badge: "photo",   text: "Snimanje prvog plesa" },
-        { badge: "waiters", text: "Prijem i skladištenje torte" }
+        { badge: "waiters", text: "Serviranje glavnog jela" }
       ]},
       { time: "18:45", title: "Kolo", teams: [
         { badge: "band",  text: "Izvođenje kola" },
