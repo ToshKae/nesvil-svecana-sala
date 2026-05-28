@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raspored gostiju</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #fdf6f0;
+      min-height: 100vh;
+      color: #1a1a1a;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    body.dark {
+      background: #141414;
+      color: #f0f0f0;
+    }
+
+    .container {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 48px 20px 60px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 36px;
+      animation: fadeUp 0.8s ease-out;
+    }
+
+    .title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      letter-spacing: 0.08em;
+      margin: 0;
+      transition: color 0.3s ease;
+    }
+
+    body.dark .title { color: #f0f0f0; }
+    .title span { color: #d4af37; }
+
+    .title-subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: #aaa;
+      letter-spacing: 0.06em;
+      margin: 8px 0 0;
+    }
+
+    body.dark .title-subtitle { color: #555; }
+
+    .header-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .theme-toggle {
+      display: flex;
+      background: #e8ddd4;
+      border-radius: 20px;
+      padding: 3px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    body.dark .theme-toggle { background: #2a2a2a; }
+
+    .theme-toggle .opt {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 3px 9px;
+      border-radius: 16px;
+      color: #aaa;
+      transition: background 0.25s ease, color 0.25s ease;
+      user-select: none;
+    }
+
+    .theme-toggle .opt.active {
+      background: #fff;
+      color: #1a1a1a;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+    }
+
+    body.dark .theme-toggle .opt.active {
+      background: #3a3a3a;
+      color: #f0f0f0;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: #6b4f2a;
+      text-decoration: none;
+      margin-bottom: 20px;
+    }
+
+    .back-link:hover { color: #d4af37; }
+    body.dark .back-link { color: #c9a432; }
+    body.dark .back-link:hover { color: #d4af37; }
+
+    .search-wrap {
+      margin-bottom: 28px;
+      animation: fadeUp 0.8s ease-out 0.1s both;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 10px 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 400;
+      border: 1px solid rgba(212,175,55,0.3);
+      border-radius: 10px;
+      background: #fff;
+      color: #1a1a1a;
+      outline: none;
+      transition: border-color 0.2s ease, background 0.3s ease, color 0.3s ease;
+    }
+
+    .search-input::placeholder { color: #bbb; }
+    .search-input:focus { border-color: #d4af37; }
+
+    body.dark .search-input {
+      background: #1f1f1f;
+      color: #f0f0f0;
+      border-color: rgba(212,175,55,0.2);
+    }
+
+    body.dark .search-input::placeholder { color: #555; }
+
+    .timeline { position: relative; }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 40px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, transparent, #e8d5b0 40px, #e8d5b0 calc(100% - 40px), transparent);
+      transition: background 0.3s ease;
+    }
+
+    body.dark .timeline::before {
+      background: linear-gradient(to bottom, transparent, #3a3020 40px, #3a3020 calc(100% - 40px), transparent);
+    }
+
+    .block {
+      display: flex;
+      margin-bottom: 28px;
+      position: relative;
+      animation: fadeUp 0.8s ease-out both;
+    }
+
+    .block.hidden { display: none; }
+
+    .num-col {
+      width: 40px;
+      flex-shrink: 0;
+      text-align: right;
+      padding-top: 2px;
+      padding-right: 6px;
+    }
+
+    .table-num {
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      color: #888;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      transition: color 0.3s ease;
+    }
+
+    body.dark .table-num { color: #666; }
+
+    .table-count {
+      font-size: 0.66rem;
+      color: #bbb;
+      margin-top: 3px;
+      font-weight: 300;
+      transition: color 0.3s ease;
+    }
+
+    body.dark .table-count { color: #555; }
+
+    .dot {
+      position: absolute;
+      left: 34px;
+      top: 5px;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      border: 2px solid #d4af37;
+      background: #fdf6f0;
+      transition: background 0.3s ease;
+    }
+
+    body.dark .dot { background: #141414; }
+
+    .content {
+      flex: 1;
+      padding-left: 24px;
+    }
+
+    .block-label {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+      background: rgba(212, 175, 55, 0.12);
+      color: #b8942a;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    body.dark .block-label {
+      background: rgba(212, 175, 55, 0.15);
+      color: #c9a432;
+    }
+
+    .block-subtitle {
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: #aaa;
+      margin: -2px 0 8px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+
+    body.dark .block-subtitle { color: #555; }
+
+    .table-total {
+      margin-top: 8px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: #b8942a;
+      letter-spacing: 0.06em;
+      text-align: right;
+      transition: color 0.3s ease;
+    }
+
+    body.dark .table-total { color: #c9a432; }
+
+    /* Guests grid */
+    .guests {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+    }
+
+    .guests li {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: #555;
+      padding: 6px 8px 6px 10px;
+      background: #fff;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+      min-height: 34px;
+      cursor: default;
+    }
+
+    .guests li:not(.empty):hover { box-shadow: 0 1px 6px rgba(0,0,0,0.1); }
+
+    body.dark .guests li {
+      background: #1f1f1f;
+      color: #bbb;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    }
+
+    .guests li .seat-num {
+      font-size: 0.65rem;
+      color: #ccc;
+      width: 14px;
+      text-align: right;
+      flex-shrink: 0;
+      font-family: 'Courier New', monospace;
+      transition: color 0.3s ease;
+    }
+
+    body.dark .guests li .seat-num { color: #555; }
+
+    .guests li .guest-name {
+      flex: 1;
+      min-width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .guests li.empty .guest-name {
+      color: #ddd;
+      font-style: italic;
+      font-size: 0.78rem;
+    }
+
+    body.dark .guests li.empty .guest-name { color: #3a3a3a; }
+
+
+    /* Merged cells */
+    .guests li.merged {
+      grid-column: span 2;
+      flex-direction: column;
+      align-items: stretch;
+      padding: 0;
+      gap: 0;
+      overflow: hidden;
+      border-left: 2px solid rgba(212,175,55,0.35);
+    }
+
+    body.dark .guests li.merged { border-left-color: rgba(212,175,55,0.2); }
+
+    .merged-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 8px 5px 10px;
+      min-height: 30px;
+      cursor: default;
+    }
+
+    .merged-row + .merged-row { border-top: 1px solid rgba(0,0,0,0.05); }
+    body.dark .merged-row + .merged-row { border-top-color: rgba(255,255,255,0.04); }
+
+    .guests li.merged.highlight { border: 1px solid rgba(212,175,55,0.5); border-left-width: 3px; }
+
+    .guests li, .merged-row { cursor: default; }
+
+    /* Highlight from search */
+    .guests li.highlight {
+      border: 1px solid rgba(212,175,55,0.5);
+      box-shadow: 0 0 10px rgba(212,175,55,0.15);
+    }
+
+    .search-results {
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .search-result-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      background: #fff;
+      border-radius: 10px;
+      border-left: 3px solid #d4af37;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+      animation: fadeUp 0.25s ease-out both;
+    }
+
+    body.dark .search-result-card {
+      background: #1f1f1f;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.25);
+    }
+
+    .search-result-left { display: flex; flex-direction: column; gap: 2px; }
+
+    .search-result-name {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #1a1a1a;
+    }
+
+    body.dark .search-result-name { color: #f0f0f0; }
+
+    .search-result-group {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: #aaa;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body.dark .search-result-group { color: #666; }
+
+    .search-result-table {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #b8942a;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+      margin-left: 12px;
+    }
+
+    body.dark .search-result-table { color: #c9a432; }
+
+    /* Mini mapa */
+    .mini-map-wrap {
+      margin-bottom: 24px;
+      animation: fadeUp 0.8s ease-out 0.05s both;
+    }
+
+    .mini-map-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .mini-map-label {
+      font-size: 0.68rem;
+      color: #bbb;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    body.dark .mini-map-label { color: #555; }
+
+    .show-all-btn {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(212,175,55,0.4);
+      background: transparent;
+      color: #b8942a;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .show-all-btn:hover, .show-all-btn.active {
+      background: rgba(212,175,55,0.12);
+      color: #9a7a1a;
+      border-color: #d4af37;
+    }
+
+    body.dark .show-all-btn { color: #c9a432; border-color: rgba(212,175,55,0.3); }
+    body.dark .show-all-btn:hover, body.dark .show-all-btn.active { background: rgba(212,175,55,0.15); color: #d4af37; }
+
+    .mini-map {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 60%;
+    }
+
+    .mini-table {
+      position: absolute;
+      width: 9.5%;
+      aspect-ratio: 1;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 2px solid #d4af37;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #d4af37;
+      background: #fdf6f0;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+      user-select: none;
+    }
+
+    .mini-table.odd {
+      box-shadow: 0 0 0 3px #fdf6f0, 0 0 0 5px #d4af37;
+    }
+
+    body.dark .mini-table.odd {
+      box-shadow: 0 0 0 3px #141414, 0 0 0 5px rgba(212,175,55,0.6);
+    }
+
+    .mini-table.hybrid {
+      border: 4px solid #b8942a;
+    }
+
+    body.dark .mini-table.hybrid {
+      border: 4px solid #b8942a;
+    }
+
+    body.dark .mini-table {
+      background: #141414;
+      border-color: rgba(212,175,55,0.6);
+    }
+
+    .mini-tbl-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1;
+      pointer-events: none;
+      transition: font-size 0.15s;
+    }
+
+    .mini-table:hover { background: rgba(212,175,55,0.12); }
+    body.dark .mini-table:hover { background: rgba(212,175,55,0.15); }
+
+    .mini-table.active,
+    body.dark .mini-table.active,
+    .mini-mlad.active,
+    body.dark .mini-mlad.active {
+      background: #d4af37 !important;
+      color: #1a1a1a !important;
+      border-color: #d4af37 !important;
+    }
+
+    .mini-stub {
+      position: absolute;
+      width: 3.5%;
+      aspect-ratio: 1;
+      transform: translate(-50%, -50%);
+      background: #c8b89a;
+      border-radius: 3px;
+    }
+
+    body.dark .mini-stub { background: #3a3020; }
+
+    .mini-mlad {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      width: 4%;
+      height: 13%;
+      border: 2px solid #d4af37;
+      border-radius: 3px 3px 2px 2px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.615rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-align: center;
+      line-height: 1.2;
+      color: #d4af37;
+      background: #fdf6f0;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      user-select: none;
+    }
+
+    body.dark .mini-mlad { background: #141414; }
+    .mini-mlad:hover { background: rgba(212,175,55,0.12); }
+    .mini-mlad.active { background: #d4af37; color: #1a1a1a; }
+
+    .no-results {
+      text-align: center;
+      padding: 40px 0;
+      font-size: 0.85rem;
+      color: #bbb;
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    body.dark .no-results { color: #444; }
+
+    .summary {
+      text-align: center;
+      font-size: 0.75rem;
+      color: #aaa;
+      letter-spacing: 0.06em;
+      margin-bottom: 24px;
+      animation: fadeUp 0.8s ease-out 0.15s both;
+    }
+
+    body.dark .summary { color: #555; }
+
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+      .header { margin-bottom: 24px; }
+      .title { font-size: 1.4rem; }
+      .container { padding-left: 12px; padding-right: 12px; }
+      .guests { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header class="header">
+      <div class="header-row">
+        <h1 class="title">🪑 Raspored <span>gostiju</span></h1>
+      </div>
+    </header>
+
+    <div style="text-align:center;">
+      <a href="index.html" class="back-link">← Nazad na glavnu stranu</a>
+    </div>
+
+    <div class="search-wrap">
+      <input
+        class="search-input"
+        type="search"
+        id="searchInput"
+        placeholder="Pretraži gosta po imenu..."
+        oninput="filterGuests(this.value)"
+        autocomplete="off"
+      />
+    </div>
+
+    <div class="search-results" id="searchResults"></div>
+
+    <div class="mini-map-wrap">
+      <div class="mini-map-header">
+        <span class="mini-map-label">Sala</span>
+        <div class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+            <span class="opt active" id="opt-light">Svetla</span>
+            <span class="opt" id="opt-dark">Tamna</span>
+          </div>
+      </div>
+      <div class="mini-map">
+        <!-- Red 1 -->
+        <div class="mini-table" style="left:9%;top:10%" data-table="20" onclick="filterByTable(20)"><span class="mini-tbl-val">20</span></div>
+        <div class="mini-table" style="left:22.4%;top:10%" data-table="17" onclick="filterByTable(17)"><span class="mini-tbl-val">17</span></div>
+        <div class="mini-table" style="left:35.8%;top:10%" data-table="14" onclick="filterByTable(14)"><span class="mini-tbl-val">14</span></div>
+        <div class="mini-table" style="left:49.3%;top:10%" data-table="11" onclick="filterByTable(11)"><span class="mini-tbl-val">11</span></div>
+        <div class="mini-table" style="left:62.7%;top:10%" data-table="9" onclick="filterByTable(9)"><span class="mini-tbl-val">9</span></div>
+        <div class="mini-table" style="left:76.1%;top:10%" data-table="6" onclick="filterByTable(6)"><span class="mini-tbl-val">6</span></div>
+        <div class="mini-table" style="left:89.5%;top:10%" data-table="3" onclick="filterByTable(3)"><span class="mini-tbl-val">3</span></div>
+        <!-- Stub -->
+        <div class="mini-stub" style="left:49.3%;top:23%"></div>
+        <!-- Red 2 -->
+        <div class="mini-table" style="left:9%;top:37%" data-table="19" onclick="filterByTable(19)"><span class="mini-tbl-val">19</span></div>
+        <div class="mini-table" style="left:22.4%;top:37%" data-table="16" onclick="filterByTable(16)"><span class="mini-tbl-val">16</span></div>
+        <div class="mini-table" style="left:35.8%;top:37%" data-table="13" onclick="filterByTable(13)"><span class="mini-tbl-val">13</span></div>
+        <div class="mini-table" style="left:49.3%;top:37%" data-table="10" onclick="filterByTable(10)"><span class="mini-tbl-val">10</span></div>
+        <div class="mini-table" style="left:62.7%;top:37%" data-table="8" onclick="filterByTable(8)"><span class="mini-tbl-val">8</span></div>
+        <div class="mini-table" style="left:76.1%;top:37%" data-table="5" onclick="filterByTable(5)"><span class="mini-tbl-val">5</span></div>
+        <div class="mini-table" style="left:89.5%;top:37%" data-table="2" onclick="filterByTable(2)"><span class="mini-tbl-val">2</span></div>
+        <!-- Red 3 -->
+        <div class="mini-table" style="left:9%;top:64%" data-table="18" onclick="filterByTable(18)"><span class="mini-tbl-val">18</span></div>
+        <div class="mini-table" style="left:22.4%;top:64%" data-table="15" onclick="filterByTable(15)"><span class="mini-tbl-val">15</span></div>
+        <div class="mini-table" style="left:35.8%;top:64%" data-table="12" onclick="filterByTable(12)"><span class="mini-tbl-val">12</span></div>
+        <div class="mini-stub" style="left:49.3%;top:64%"></div>
+        <div class="mini-table" style="left:62.7%;top:64%" data-table="7" onclick="filterByTable(7)"><span class="mini-tbl-val">7</span></div>
+        <div class="mini-table" style="left:76.1%;top:64%" data-table="4" onclick="filterByTable(4)"><span class="mini-tbl-val">4</span></div>
+        <div class="mini-table" style="left:89.5%;top:64%" data-table="1" onclick="filterByTable(1)"><span class="mini-tbl-val">1</span></div>
+        <!-- Red 4 -->
+        <div class="mini-table" style="left:9%;top:85%" data-table="22" onclick="filterByTable(22)"><span class="mini-tbl-val">22</span></div>
+        <div class="mini-table" style="left:22.4%;top:85%" data-table="21" onclick="filterByTable(21)"><span class="mini-tbl-val">21</span></div>
+        <!-- Mladenački sto -->
+        <div class="mini-mlad" style="left:89.5%;top:85%" data-table="0" onclick="filterByTable(0)">mlad<br>enački</div>
+      </div>
+    </div>
+
+    <div class="summary" id="summary"></div>
+    <div class="summary" id="parity-summary"></div>
+    <div class="timeline" id="timeline"></div>
+    <div class="no-results" id="noResults" style="display:none;">Nije pronađen nijedan gost.</div>
+
+  </div>
+
+  <script>
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbynu8a8mQcw8gB2O5KRAn-6xmcvTfZPrg5M8amU7QFlGD70jQVp0e4fO218RNHABbBm/exec';
+
+    // --- Helpers ---
+    function gName(g) { return typeof g === 'string' ? g : (g ? g.name || '' : ''); }
+    function gGroup(g) { return typeof g === 'string' ? null : (g ? g.group || null : null); }
+
+    function tableCapacity(id) { return id === 0 ? 7 : 12; }
+
+    function rowsToTables(rows) {
+      const map = {};
+      rows.forEach(row => {
+        const id = parseInt(row['Sto ID']);
+        if (!map[id]) {
+          const cap = tableCapacity(id);
+          map[id] = { id, label: String(row['Sto'] || ''), guests: new Array(cap).fill(''), capacity: cap };
+          if (row['Podnaslov']) map[id].subtitle = String(row['Podnaslov']);
+        }
+        const seatIdx = parseInt(row['Sediste']) - 1;
+        const name  = String(row['Ime']   || '').trim();
+        const group = String(row['Grupa'] || '').trim();
+        const cap = map[id].capacity;
+        if (seatIdx >= 0 && seatIdx < cap)
+          map[id].guests[seatIdx] = group ? { name, group } : name;
+      });
+      return Object.values(map).sort((a, b) => a.id - b.id);
+    }
+
+    let TABLES = [];
+
+    // Groups consecutive (and non-consecutive) guests by group key.
+    // Returns array of { type: 'single'|'merged', ... }
+    function processGuests(guests) {
+      const seenGroups = new Set();
+      const result = [];
+      guests.forEach((g, idx) => {
+        const name = gName(g);
+        const group = gGroup(g);
+        if (!group) {
+          result.push({ type: 'single', seatIdx: idx, name });
+        } else if (!seenGroups.has(group)) {
+          seenGroups.add(group);
+          const members = guests
+            .map((x, i) => ({ seatIdx: i, name: gName(x), group: gGroup(x) }))
+            .filter(x => x.group === group);
+          result.push({ type: 'merged', group, members });
+        }
+      });
+      return result;
+    }
+
+    // Označi hibridne i neparne stolove na mini mapi
+    const hybridTables = new Set([4]);
+    document.querySelectorAll('.mini-table').forEach(el => {
+      const num = parseInt(el.dataset.table);
+      if (hybridTables.has(num)) el.classList.add('hybrid');
+      else if (num % 2 === 1) el.classList.add('odd');
+    });
+
+    // --- Mini map filter ---
+    let activeTableFilter = null;
+
+    function filterByTable(id) {
+      if (activeTableFilter === id) { showAll(); return; }
+      activeTableFilter = id;
+      const y = window.scrollY;
+      document.querySelectorAll('.block').forEach(b => b.classList.toggle('hidden', b.id !== `table-${id}`));
+      requestAnimationFrame(() => window.scrollTo(0, y));
+      document.querySelectorAll('.mini-table, .mini-mlad').forEach(c => c.classList.toggle('active', parseInt(c.dataset.table) === id));
+      document.getElementById('searchInput').value = '';
+      document.getElementById('searchResults').style.display = 'none';
+      document.getElementById('searchResults').innerHTML = '';
+      document.getElementById('noResults').style.display = 'none';
+    }
+
+    function showAll() {
+      const y = window.scrollY;
+      activeTableFilter = null;
+      document.querySelectorAll('.block').forEach(b => b.classList.remove('hidden'));
+      requestAnimationFrame(() => window.scrollTo(0, y));
+      document.querySelectorAll('.mini-table, .mini-mlad').forEach(c => c.classList.remove('active'));
+    }
+
+
+
+    // --- Render helpers ---
+    function makeRowContent(seatIdx, name, isEmpty) {
+      if (isEmpty) {
+        return `<span class="seat-num">${seatIdx + 1}</span><span class="guest-name">—</span>`;
+      }
+      return `<span class="seat-num">${seatIdx + 1}</span><span class="guest-name">${name}</span>`;
+    }
+
+    function bindRow(el, tableId, seatIdx) {
+      el.dataset.table = tableId;
+      el.dataset.seat = seatIdx;
+    }
+
+    function renderSingleLi(tableId, seatIdx, name) {
+      const li = document.createElement('li');
+      const hide = tableId === 0 && !name.trim();
+      if (hide) { li.style.display = 'none'; li.dataset.table = tableId; li.dataset.seat = seatIdx; return li; }
+      const isEmpty = !name.trim();
+      if (isEmpty) li.classList.add('empty');
+      else li.dataset.name = name.toLowerCase();
+      li.innerHTML = makeRowContent(seatIdx, name, isEmpty);
+      bindRow(li, tableId, seatIdx);
+      return li;
+    }
+
+    function renderMergedLi(tableId, members) {
+      const li = document.createElement('li');
+      li.classList.add('merged');
+      // data-names for search
+      li.dataset.names = members.map(m => m.name.toLowerCase()).join(' ');
+
+      members.forEach(m => {
+        const row = document.createElement('div');
+        row.className = 'merged-row';
+        row.innerHTML = makeRowContent(m.seatIdx, m.name, false);
+        row.dataset.name = m.name.toLowerCase();
+        bindRow(row, tableId, m.seatIdx);
+        li.appendChild(row);
+      });
+
+      return li;
+    }
+
+    // --- Build ---
+    function buildTables() {
+      const timeline = document.getElementById('timeline');
+      const totalGuests = TABLES.reduce((s, t) => s + t.guests.filter(g => gName(g).trim()).length, 0);
+      document.getElementById('summary').textContent =
+        `${TABLES.length} stolova · ${totalGuests} gostiju raspoređeno`;
+      updateParitySummary();
+
+      timeline.innerHTML = '';
+
+      TABLES.forEach((table, idx) => {
+        const filled = table.guests.filter(g => gName(g).trim()).length;
+        const block = document.createElement('div');
+        block.className = 'block';
+        block.id = `table-${table.id}`;
+        block.style.animationDelay = `${(idx * 0.04).toFixed(2)}s`;
+
+        block.innerHTML = `
+          <div class="num-col">
+            <div class="table-num">${table.id === 0 ? '★' : String(table.id).padStart(2, '0')}</div>
+            <div class="table-count">${filled}/${table.capacity}</div>
+          </div>
+          <div class="dot"></div>
+          <div class="content">
+            <span class="block-label">${table.label}</span>
+            ${table.subtitle ? `<div class="block-subtitle">${table.subtitle}</div>` : ''}
+          </div>`;
+
+        const ul = document.createElement('ul');
+        ul.className = 'guests';
+
+        processGuests(table.guests).forEach(entry => {
+          if (entry.type === 'single') {
+            ul.appendChild(renderSingleLi(table.id, entry.seatIdx, entry.name));
+          } else {
+            ul.appendChild(renderMergedLi(table.id, entry.members));
+          }
+        });
+
+        const countBar = document.createElement('div');
+        countBar.className = 'table-total';
+        countBar.textContent = `${filled} / ${table.capacity} gostiju`;
+
+        const content = block.querySelector('.content');
+        content.appendChild(ul);
+        content.appendChild(countBar);
+        timeline.appendChild(block);
+      });
+
+    }
+
+
+    function toggleTheme() {
+      const isDark = document.body.classList.toggle('dark');
+      document.getElementById('opt-dark').classList.toggle('active', isDark);
+      document.getElementById('opt-light').classList.toggle('active', !isDark);
+    }
+
+    function updateMiniMapCount(tableId) {
+      const el = document.querySelector(`.mini-table[data-table="${tableId}"]`);
+      if (!el) return;
+    }
+
+    function updateCount(tableId) {
+      const block = document.getElementById(`table-${tableId}`);
+      if (!block) return;
+      const table = TABLES.find(t => t.id === tableId);
+      const cap = table ? table.capacity : 12;
+      const filled = block.querySelectorAll('.guests li[data-name], .merged-row[data-name]').length;
+      block.querySelector('.table-count').textContent = `${filled}/${cap}`;
+      block.querySelector('.table-total').textContent = `${filled} / ${cap} gostiju`;
+      updateMiniMapCount(tableId);
+    }
+
+    function updateSummary() {
+      const total = TABLES.reduce((s, t) => s + t.guests.filter(g => gName(g).trim()).length, 0);
+      document.getElementById('summary').textContent =
+        `${TABLES.length} stolova · ${total} gostiju raspoređeno`;
+      updateParitySummary();
+    }
+
+    function updateParitySummary() {
+      const relevant = TABLES.filter(t => t.id > 0);
+      const even = relevant.filter(t => t.id % 2 === 0).reduce((s, t) => s + t.guests.filter(g => gName(g).trim()).length, 0);
+      const odd  = relevant.filter(t => t.id % 2 !== 0).reduce((s, t) => s + t.guests.filter(g => gName(g).trim()).length, 0);
+      document.getElementById('parity-summary').textContent =
+        `Parni stolovi: ${even} gostiju · Neparni stolovi: ${odd} gostiju`;
+    }
+
+    // --- Search ---
+    function filterGuests(query) {
+      const q = query.trim().toLowerCase();
+      const resultsEl = document.getElementById('searchResults');
+      let anyVisible = false;
+      const hits = [];
+
+      // reset map filter when searching
+      if (q) {
+        activeTableFilter = null;
+        document.querySelectorAll('.mini-table, .mini-mlad').forEach(c => c.classList.remove('active'));
+      }
+
+      document.querySelectorAll('.block').forEach(block => {
+        if (!q) {
+          block.classList.remove('hidden');
+          block.querySelectorAll('.guests li, .merged-row').forEach(el => el.classList.remove('highlight'));
+          anyVisible = true;
+          return;
+        }
+        let match = false;
+        const tableLabel = block.querySelector('.block-label')?.textContent || '';
+        const tableId = parseInt(block.id.replace('table-', ''));
+
+        block.querySelectorAll('.guests li[data-name]').forEach(li => {
+          const hit = li.dataset.name.includes(q);
+          li.classList.toggle('highlight', hit);
+          if (hit) { match = true; hits.push({ name: li.querySelector('.guest-name')?.textContent, table: tableLabel, tableId }); }
+        });
+
+        block.querySelectorAll('.guests li.merged').forEach(li => {
+          const allNames = [...li.querySelectorAll('.merged-row[data-name]')]
+            .map(r => r.querySelector('.guest-name')?.textContent).filter(Boolean);
+          li.querySelectorAll('.merged-row[data-name]').forEach(row => {
+            const hit = row.dataset.name.includes(q);
+            if (hit) { match = true; hits.push({ name: row.querySelector('.guest-name')?.textContent, table: tableLabel, tableId, group: allNames }); }
+          });
+          const anyHit = li.dataset.names.includes(q);
+          li.classList.toggle('highlight', anyHit);
+        });
+
+        block.classList.toggle('hidden', !match);
+        if (match) anyVisible = true;
+      });
+
+      if (!q) {
+        resultsEl.style.display = 'none';
+        resultsEl.innerHTML = '';
+      } else {
+        resultsEl.innerHTML = hits.map((h, i) =>
+          `<div class="search-result-card" style="animation-delay:${i * 0.05}s;cursor:pointer" onclick="filterByTable(${h.tableId})">
+            <div class="search-result-left">
+              <span class="search-result-name">${h.name || '—'}</span>
+              ${h.group && h.group.length > 1 ? `<span class="search-result-group">${h.group.join(', ')}</span>` : ''}
+            </div>
+            <span class="search-result-table">${h.table}</span>
+          </div>`
+        ).join('');
+        resultsEl.style.display = hits.length ? 'flex' : 'none';
+      }
+
+      document.getElementById('noResults').style.display = (q && !anyVisible) ? 'block' : 'none';
+    }
+
+    function loadData() {
+      document.getElementById('timeline').innerHTML =
+        '<p style="padding:20px;color:#aaa;font-family:Montserrat,sans-serif">Učitavanje podataka...</p>';
+      fetch(SCRIPT_URL + '?action=read&t=' + Date.now())
+        .then(r => r.json())
+        .then(data => {
+          if (!data.ok) throw new Error(data.error);
+          TABLES = rowsToTables(data.rows);
+          buildTables();
+        })
+        .catch(err => {
+          document.getElementById('timeline').innerHTML =
+            '<p style="padding:20px;color:#c00;font-family:sans-serif">Greška pri učitavanju.<br><small>' + err + '</small></p>';
+        });
+    }
+
+    loadData();
+  </script>
+</body>
+</html>
